@@ -1,0 +1,3 @@
+#!/bin/sh
+xgettext -L PHP --keyword=_ --no-location --default-domain=ldapudidentities ../options_identities.php -o ldapudidentities.pot
+#xgettext -L PHP --keyword=_ --no-location --default-domain=ldapuserdata ../setup.php ../functions.php ../ldap_prefs.php -o ldapuserdata.pot

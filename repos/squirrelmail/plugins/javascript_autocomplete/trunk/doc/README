@@ -1,0 +1,18 @@
+
+Squirrelmail Javascript Autocomplete plugin
+Author: Alexandros Vellis <avel@noc.uoa.gr>
+
+National & Kapodistrian University of Athens
+Network Operations Centre
+http://www.noc.uoa.gr
+http://email.uoa.gr
+
+
+Based on jquery AutoSuggest by Drew Wilson:
+http://code.drewwilson.com/entry/autosuggest-jquery-plugin
+
+AutoSuggest jQuery plug-in is dual licensed under the MIT and GPL licenses.
+http://www.opensource.org/licenses/mit-license.php
+http://www.gnu.org/licenses/gpl.html
+
+

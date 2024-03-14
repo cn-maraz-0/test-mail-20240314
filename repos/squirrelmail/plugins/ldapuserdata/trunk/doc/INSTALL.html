@@ -1,0 +1,103 @@
+
+<h1><em>ldapuserdata</em> Instalation Guide</h1>
+
+<h2>Requirements</h2>
+
+<ul>
+
+<li>Squirrelmail <strong>1.4.4</strong> or greater.</li>
+
+<li>Working LDAP Server. Tested with <a
+href="http://www.openldap.org">OpenLDAP</a>.  </ul>
+
+</li>
+
+
+<h2>Installation</h2>
+
+<h3>Squirrelmail Preparation</h3>
+
+<ul>
+<li>Untar the distribution under the plugins directory of your Squirrelmail. You
+probably have already done this.</li>
+
+<li>Enable the plugin in Squirrelmail, preferrably using the <em>conf.pl</em>
+administration script.</li>
+
+<li>Optional: Occasionally people on the Squirrelmail-devel mailing list have
+complained that there are too many options in the various options screens, and
+this is against usability and user-friendliness. Since part of the concept was
+to cut down on options anyway, you can also remove, i.e. comment-out, the
+options that are not used, in the files include/options/*.php. This will make
+these screens lighter and provide only the preferences that will be saved
+across sessions.<br /><br />
+The relevant files are provided here, if you wish to use the exact, provided
+schema.<br /><br />
+So, you can substitute the original <strong>include/options/*.php</strong>
+files with the ones provided in the directory options_screens; their purpose is
+to <strong>remove</strong> the functionality that is available to the user by
+removing the options that are not saved in LDAP.<br/><br/>
+For these options that have been removed, there are sane defaults provided in
+config_sample.php.</li>
+
+</ul>
+
+
+
+<h3>OpenLDAP Preparation</h3>
+
+<ul>
+
+<li>Add squirrelmail.schema to your LDAP server. The file provided in
+doc/squirrelmail.schema is suitable for at least OpenLDAP 2.1.x. For
+information on how to add the schema, please consult the
+documenation of your LDAP server.</li>
+
+<li>Optionally, add a squirrelmail virtual user with read-only access in your
+LDAP tree. This is configurable in config.php. You can bind as Manager all the
+time and do the work; however, this is not a good practice, and the best thing
+would be to have a separate squirrelmail virtual user and the appropriate ACLs.
+There is also a need for an account with write access; this account must be
+able to write the Squirrelmail attributes, as well as update the user's
+objectClass.</li>
+
+</ul>
+
+
+<h3>LDAPuserdata Plugin configuration</h3>
+
+<ul>
+<li>Copy config_sample.php to config.php and edit accordingly to suit your
+preferences. The file is self-commented.<br /><br />
+Remember that for all variables, even those that are not part of the LDAP
+schema, you can always provide resonable and nice defaults in the
+$prefs_default array.</li>
+
+</ul>
+
+
+
+
+<h3>Advanced Configuration</h3>
+
+
+<ul>
+<li>If you need to define different IMAP servers for each user in LDAP, then
+you are probably using something like the schema of Perdition, which holds
+attributes for the user's mailhost. In that case, in your Squirrelmail
+configuration, you can set the IMAP server address to be
+<strong>'map:ldapuserdata_get_imapserveraddress'</strong>, i.e.:
+<tt>$imapServerAddress = 'map:ldapuserdata_get_imapserveraddress';</tt> </li>
+
+<li>For Information regarding LDAP-based Identities, see the page <a
+href="ldapuserdata_ldapidentities.php">LDAP Identities</a>.</li>
+
+</ul>
+
+
+<p>Good luck... There might be some things I've left out, so please email <a
+href="http://lists.sourceforge.net/lists/listinfo/squirrelmail-plugins">squirrelmail-plugins
+mailing list</a> with questions. Feel free to Cc: me anyway so as to grab my
+attention. (<strong>Do</strong> read this manual first!).</p>
+
+

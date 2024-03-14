@@ -1,0 +1,75 @@
+<h1>UserACL Plugin for Squirrelmail</h1>
+
+<h2>Introduction</h2>
+
+<p>This plugin provides Squirrelmail with the functionality of Access Control
+Lists (ACLs) aka Permissions per User, that is available in many modern IMAP
+servers, the most popular open-source one being Cyrus IMAP.
+</p><p>
+ACLs allow you to declare such things as:
+</p>
+
+<ul>
+<li>&quot;I Allow user bar to view the contents of my folder
+INBOX.Work.&quot;</li>
+
+<li>&quot;I Allow users bar and taz to write (append) to the contents of the
+folder INBOX.OurSharedFolder.&quot;</li>
+
+<li>&quot;I Allow user bar full rights (read, write &amp; delete) in the
+contents of the folder INBOX.foo.&quot;</li>
+
+</ul>
+
+<p>...et cetera.</p>
+
+<p>The user that you allow the those rights to, will see your folder
+<em>INBOX.foo</em>, assuming your username is foobar, as
+&quot;user.foobar.foo&quot;, in normal namespace, or &quot;Other
+Users.foobar.foo&quot; in Alternate Namespace.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Optionally email a notification about the changes in permissions to the
+target user.</li>
+
+<li>Can interact with the <a
+href="http://email.uoa.gr/projects/squirrelmail/directory.php">Directory
+Service plugin</a>. (Display search form to directory service, or the directory
+search page displaying a link back to useracl form).</li>
+
+<li>Can display the real names of the users together with their IDs, taken from
+an LDAP server.</li>
+
+<li>Can check for the existence of a user in an LDAP directory before adding
+a permission.</li>
+
+</ul>
+
+<h2>Requirements</h2>
+
+<p>The only requirement is an IMAP server that supports the IMAP ACL
+extension.</p>
+
+<p>The only tested IMAP server at the moment is Cyrus IMAP.</p>
+
+<p>This plugin has been based on some of the functionality - and code - of the
+<a href="http://email.uoa.gr/projects/cyrusmaster/">Cyrusmaster project</a>.</p>
+
+
+<h2>Authors</h2>
+
+<p>Main Plugin Code: Alexandros Vellis, avel at noc.uoa.gr</p>
+
+<p>Some GUI code and backend classes (IMAP ACLs) originally written by:
+Christos Soulios, Pavlos Drandakis.
+</p>
+
+<p>Some icons from <a href="http://www.famfamfam.com/lab/icons/">famfamfam / Mark James</a>,
+ licensed under <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons
+     Attribution 2.5 License</a>.
+ <br/>&quot;Share&quot; icon by <a href="http://shareicons.com">http://shareicons.com</a>, licensed under 
+ <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons
+     Attribution 2.5 License</a>.</p>
+

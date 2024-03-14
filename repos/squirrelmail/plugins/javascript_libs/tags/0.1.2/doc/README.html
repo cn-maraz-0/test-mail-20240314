@@ -1,0 +1,200 @@
+
+<h2>What?</h2>
+
+<p>
+The <em>javascript_libs</em> plugin is a Squirrelmail &quot;library&quot;
+plugin that allows Squirrelmail plugin developers to easily take advantage and
+make use of popular javascript libraries and frameworks.  </p>
+
+<h2>Why?</h2>
+
+<p>The <a href="http://email.uoa.gr/projects/squirrelmail/avelsieve.php">Sieve
+    Mail filters plugin (avelsieve)</a> was in need of some usability
+improvements and UI effects. These had to be done as an option, so that the UI
+would degrade nicely if a browser would not support Javascript. Thus,
+javascript_libs was born.</p>
+
+<p>And because other plugin authors might want to take advantage of the
+plugin's feature, in order to take advantage of Javascript frameworks or
+introduce Javascript effects themselves, this small piece of documentation was
+written and the plugin is released properly.</p>
+
+
+<h2>A Guide to Users / Administrators</h2>
+
+<p>Simply untar the plugin under your Squirrelmail plugins/ directory and
+enable it in Squirrelmail configuration.</p>
+
+
+<h2>A Guide to Plugin Authors / Developers</h2>
+
+<h3>Purpose / Motivation</h3>
+
+<p>The purpose of the plugin is to:</p>
+
+<ol>
+    <li>Provide some popular javascript libraries and frameworks (prototype,
+scriptaculous, lightbox) in an easy to install squirrelmail plugin
+package.</li>
+
+<li>Provide plugins or Squirrelmail core code, with a function that they
+can use to enable the usage of such a library / framework very easily.
+How easily you say?<br/>
+<br/>
+This easily:
+<br/>
+<pre name="code" class="php">
+javascript_libs_register('src/read_body.php', array('prototype-1.6.0/prototype.js','scriptaculous/scriptaculous.js'));
+</pre>
+
+</li>
+<li>Handle some basic dependencies between libraries. For instance, if a
+plugin wants to use scriptaculous, then <tt>prototype.js</tt> is also included.</li>
+
+<li>Allow two or more plugins to use the same javascript
+files / libraries, in the same page, but in the end include them only
+once.</li>
+
+</ul>
+
+
+<h3>Usage</h3>
+
+<p>All is accomplished by a simple hook called <tt>javascript_libs_register</tt>.</p>
+
+<p>In your plugin's setup.php, you need to do two things:</p>
+
+<p>In the plugin register function, make a hook to a custom function:</p>
+
+<pre name="code" class="php">
+function squirrelmail_plugin_init_example_plugin() {
+    global $squirrelmail_plugin_hooks;
+    $squirrelmail_plugin_hooks['javascript_libs_register']['example_plugin'] = 'image_lightbox_register';
+    /* Other plugin hooks... */
+}
+</pre>
+
+<p>And then, create the corresponding function, which should look like this:</p>
+
+<pre name="code" class="php">
+function example_plugin_register_jslibs() {
+    global $plugins;
+    if(in_array('javascript_libs', $plugins)) {
+        javascript_libs_register('plugins/example_plugin/script.php', array('prototype-1.6.0/prototype.js','scriptaculous/scriptaculous.js'));
+        javascript_libs_register('src/right_main.php', array('prototype-1.6.0/prototype.js'));
+    }
+}
+</pre>
+
+
+<p>The javascript_libs_register() takes two arguments:</p>
+<ul>
+    <li>string <strong>$page</strong> - the path of the PHP script, starting
+    from squirrelmail base directory, where the javascript library will be
+    enabled.</li>
+
+    <li>array <strong>$javascripts</strong> - a relative pathname of the javascript
+    file, starting from the directory <tt>plugins/javascript_libs/modules</tt>
+    For instance, <tt>'prototype-1.6.0/prototype.js'</tt> .
+</ul>
+
+
+
+<h2>Future Work and Ideas</h2>
+
+<p>The javascript_libs plugin is focusing toward usage of plugins in the
+Squirrelmail stable (1.4) branch. The development branch of Squirrelmail,
+1.5.x, has implemented templating. So, if certain javascript functionality is
+desired, especially across many pages of the Squirrelmail interface, it would
+be best to create or extend the actual templates themselves.</p>
+
+<p>However, when the 1.5.x tree grows up to more widespread usage, and if the
+usage of javascript_libs is becoming popular among plugins, it is expected that
+this plugin will work nicely in Squirrelmail 1.5.x too, in a backward-compatible way.</p>
+
+
+<h2>License</h2>
+
+<h3>javascript_libs License</h3>
+
+<p>Copyright &copy; 2007 Alexandros Vellis, The Squirrelmail Project Team</p>
+
+<p>This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+    </p>
+
+    <p>This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    </p>
+
+    <h3>Invididual Libraries / Scripts</h3>
+
+    <p>The licenses for each library and script bundled in this file, are
+    included in the subdirectory docs/<em>module_name</em> of the plugin.</p>
+
+    
+    <h3>minify License</h3>
+
+    <p>javascript_libs comes with <strong>minify</strong>, a javascript / CSS
+     optimizer, which has the following copyright notice and license terms:</p>
+
+
+    <pre>
+Copyright &copy; 2007 Ryan Grove <ryan &#64; wonko.com>
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+  * Neither the name of this project nor the names of its contributors may be
+    used to endorse or promote products derived from this software without
+    specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+
+
+<h2>TODO</h2>
+
+<ul>
+    <li>Use Pear::Cache_Lite to cache the minified javascripts.</li>
+    <li>Propertly port / adapt to Squirrelmail 1.5 and its template logic.</li>
+</ul>
+
+
+
+<h2>Links</h2>
+
+<h3>Bundled javascript libraries and scripts</h3>
+
+<strong>Prototype Javascript Framework</strong><br/>
+<a href="http://prototypejs.org/">http://prototypejs.org/</a><br/>
+<br/>
+<strong>Scriptaculous</strong><br/>
+<a href="http://script.aculo.us/">http://script.aculo.us/</a><br/>
+<br/>
+<strong>LightBox 2.0</strong><br/>
+<a href="http://www.huddletogether.com/projects/lightbox2/">http://www.huddletogether.com/projects/lightbox2/</a><br/>
+<br/>
+<strong>LightBox Plus</strong><br/>
+<a href="http://serennz.sakura.ne.jp/toybox/lightbox/?en">http://serennz.sakura.ne.jp/toybox/lightbox/?en</a><br/>
+<br/>
+

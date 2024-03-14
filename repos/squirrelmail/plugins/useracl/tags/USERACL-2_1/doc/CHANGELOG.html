@@ -1,0 +1,145 @@
+<h3>2.1 (25/7/2006)</h3>
+
+<ul>
+
+<li>Bugfix: When selecting a new folder to add an ACL into, keep the same
+folder selected in the Add new ACL GUI.</li>
+
+<li>Compatible with Squirrelmail 1.5.2 (new init scheme).</li>
+
+<li>Added a link from the folder listing to the corresponding ACL page, in the
+page header. This feature needs a new plugin hook, which is documented in
+doc/INSTALL.</li>
+
+<li>Added Installation Readme.</li>
+
+</ul>
+
+
+
+<h3>2.0 (15/7/2005)</h3>
+
+<ul>
+
+<li>Useracl can now check for an entry in a table of an SQL database (with PEAR
+DB) when checking user existence. Patch contributed by <span
+class="contributor">Mike Battersby</span>.</li>
+
+<li>Bugfix: Reset a variable in a loop, so that previous email addresses don't
+show in people who don't have an email available, or in 'anyone' and
+'anonymous'.</li>
+
+<li>Bugfix in mail sending when using the domain of the squirrelmail
+installation. (Thanks to <span class="bugreporter">Mike Battersby</span>).</li>
+
+<li>Added French Translation (<span class="translator">Bachelier Vincent</span>).</li>
+
+<li>Small bugfix for interaction with Directory Service Plugin.</li>
+
+</ul>
+
+<h3>2.0pre (9/8/2004)</h3>
+
+<ul>
+
+<li>The logic of the GUI has been changed. Instead of radio buttons, there are
+now checkboxes, and a user can choose any combination of the available
+permissions.</li>
+
+<li>The admin permission has been added.</li>
+
+<li>Added help tooltip in username input box.</li>
+
+<li>Fixed locale textdomain problem in addacl popup window.</li>
+
+<li>Update Single and <em>Update All</em> complexity is gone -- there is now
+just a single Update submit button.</li>
+
+<li>Bugfix: Page header link should not include target - makes useracl work with
+multiple windows.</li>
+
+<li>PHPDocumentor-compatible code documentation.</li>
+
+</ul>
+
+
+<h3>1.2 (16/3/2004)</h3>
+
+<ul>
+
+<li>Now uses sqimap_run_command() instead of sqimap_read_data() - compatible
+with Squirrelmail-DEVEL (1.5).</li>
+
+<li>Fixed typo in useracl.php (<span class="bugreporter">Jiri Demel</span>)</li>
+
+<li>Added German translation (<span class="translator">Ulrich
+Abend</span>)</li>
+
+<li>Added Czech translation (<span class="translator">Jiri Demel</span>)</li>
+</ul>
+
+
+<h3>1.1 (16/2/2004)</h3>
+
+<ul>
+
+<li>Folders where user has no admin permission at all are not being displayed
+any more.</li>
+
+<li>Bugfix: Add User button, when using icons, now works.</li>
+
+<li>Mail Notification was not sent for the last occurence of a user who was
+removed (if using LDAP). Fixed.</li>
+
+<li>Bugfix: Mail Identities should now work correctly.</li>
+
+<li>No requirement on directory plugin when using LDAP feature for names &amp;
+email addresses.</li>
+
+<li>Bugfix: checks on flags and permissions of existing folders are now done
+properly.</li>
+
+<li>Anything other than Cyrus' normal namespace, such as Cyrus alternate
+namespace, should now work and useracl should display the folders. A new config
+option allows this ($useracl_only_inbox = false; , by default).</li>
+
+</ul>
+
+
+<h3>1.0 (1/2/2004)</h3>
+
+<ul>
+
+<li>Added Search for User functionality (linking to <a
+href="http://email.uoa.gr/projects/squirrelmail/directory.php">directory
+services plugin</a>, a Squirrelmail plugin that implements LDAP directory
+search, with javascript)</li>
+
+<li>Added Email Notification functionality; useracl can now send an email to
+the 'recipient' of the ACL, to notify her of the changes in her
+permissions.</li>
+
+<li>Update all == adds new username as well</li>
+
+<li>Added icons in the user interface, which can enabled optionally.</li>
+
+<li>Fixed miscellaneous bugs.</li>
+
+<li>Implemented 'addacl' link from Directory Result search page.
+(Experimental)</li>
+
+<li>Plugin is now up to current Squirrelmail standards - small and fast
+setup.php, versioning information.</li>
+
+</ul>
+
+
+<h3>0.9 (19/11/2003)</h3>
+
+<ul>
+
+<li>Initial Version.</li>
+
+</ul>
+
+

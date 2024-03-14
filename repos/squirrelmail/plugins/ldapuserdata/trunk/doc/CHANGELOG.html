@@ -1,0 +1,139 @@
+
+<h2>Changelog</h2>
+
+
+<h3>0.5svn</h3>
+
+<ul>
+
+<li>Cleaner implementation; does not need much fiddling with Squirrelmail's
+files.</li>
+
+<li>Uses prefs_backend plugin hook for easier integration with
+Squirrelmail.</li>
+
+<li>New option to remove the options that are not saved in LDAP. No patch of
+Squirrelmail option files is needed.</li>
+
+<li>Squirrelmail schema has been updated. Specifically:
+
+<ul>
+<li>Newmail plugin configuration added to attributes</li>
+<li>Added composeWindowType to attributes, for html_mail plugin
+configuration.</li>
+<li>The highlight preferences are now a single-value attribute which is
+produced by serialization of the relevant Squirrelmail variables.</li>
+<li>POP Fetch variables are also serialized, which will result in less
+corrupted data being saved and read back.</li>
+<li>Official, registered to IANA, unique OIDs are used instead of the temporary
+random ones.</li>
+<li>Added attributes for preview_pane plugin.</li>
+<li>Added a generic multivalue attribute, smOptions, for any other setting, so
+no further schema changes will be needed.</li>
+</ul>
+</li>
+
+<li>Now takes under consideration mailAuthorizedAddress, as well as the
+previously supported mailAlternateAddress, for the LDAP identities.</li>
+
+<li>LDAP Identities code bundled with the plugin.</li>
+
+<li>Code has been split up to different files, so that setup.php will be
+lighter, for better performance.</li>
+
+<li>Usage of phpdocumentor for code documentation.</li>
+
+<li>Fixed bug where Trash, Sent and Draft folders were not handled as special
+folders when not defined explicitly in a user's schema.</li>
+
+<li>Now immediatley saves the preferences to LDAP, when submitting a form from
+one of the options screens (Display or Folder Options etc.)</li>
+
+<li>New option to support imapproxy connections; ldapuserdata can map different
+IMAP servers to different imapproxy daemons</li>
+
+<li>Supports the proxy authorization plugin (still to be released, as of this
+document's release).</li>
+
+<li>Fixed handling of user objects that have, for instance, a cn;lang=el
+attribute, but not cn itself, defined.</li>
+
+<li>Added a function that can check for appropriate access level for sending an
+email. If the attribute 'sendmailDisabled' exists, then sending mail from
+Squirrelmail is forbidden. See function ldapuserdata_compose_check_do() in
+functions.php for more information.</li>
+
+<li>Brought up to Squirrelmail plugin standards.</li>
+
+<li>Documentation and installation instructions largely updated.</li>
+
+<li>Lots of cleanups and E_ALL fixes.</li>
+
+<li>Insert Sender: header when sending an email, per RepFilter rationale.</li>
+
+<li>Extra patch for mail_fetch plugin (POP3 Mail Fetch), in order to save
+preferences to LDAP immediately when the UIDL changes.</li>
+
+<li>A whitelist for options items that should not be ever removed from the
+options screens.</li>
+
+<li>Sanitize / Escape special LDAP characters during LDAP searches.</li>
+
+<li>Fix logic for language retrieval; add support for limit_languages plugin.</li>
+
+<li>Don't try to write preferences in LDAP during signout if user not logged in.</li>
+
+<li>Special logic for Squirrelmail security tokens.</li>
+
+<li>(UoA) Add EduPersonPrimaryAffiliation and EduPersonPrimaryOrgUnitDn information to
+the session, if they exist, for other plugins to use.</li>
+</ul>
+
+
+<h3>0.4</h3>
+
+<ul>
+<li>register_globals = off compatible</li>
+
+<li>error_reporting = E_ALL compatible</li>
+
+<li>New option needed in the Squirrelmail configuration: set the IMAP server
+address to be <strong>'map:ldapuserdata_get_imapserveraddress'</strong>, i.e.:
+<tt>$imapServerAddress = 'map:ldapuserdata_get_imapserveraddress';</tt> </li>
+
+<li>Small fixes in the supplied config_sample.php.</li>
+
+<li>New schema for OpenLDAP 2.1.x is provided.</li>
+
+</ul>
+
+
+<h3>0.3</h3>
+
+<ul>
+<li>Works with Squirrelmail 1.4.x. (Uses SM_PATH et al).</li>
+<li>Various minor bugfixes and cleanups.</li>
+</ul>
+
+<h3>0.2</h3>
+
+<ul>
+<li>Updated the LDAP schema.</li>
+<li>Bugfix: Server side sorting is broken without a 'sort' attribute.</li>
+<li>Bugfix: Fixed some variable names. 
+<li>Bugfix: Now the special folders behave more correctly, as the appropriate
+attributes (move_to_trash, move_to_sent, save_as_draft are used).
+<li>The Options/Identities screen has been improved very much upon.</li>
+<li>Added the new options screens, based on an early Squirrelmail 1.3.0 CVS.</li>
+<li>Supports the mailalternateaddress and mailauthorizedaddress LDAP multivalue
+attributes, for an easy way to support different &quot;identities&quot;.</li>
+<li>Now allows the POP Fetch plugin attributes to be saved on the LDAP.</li>
+</ul>
+
+
+<h3>0.1</h3>
+
+<ul>
+<li>First public release.</li>
+</ul>
+

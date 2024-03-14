@@ -1,0 +1,29 @@
+
+.as-input {
+    background: transparent;
+}
+ul.as-list {
+    font-family: tahoma, arial, sans-serif;
+    font-size: inherit;
+}
+
+ul.as-selections {
+    outline: none;
+    background-color:#ebf4f9 !important;
+    line-height: 1em;
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    color:#66aad0;
+    font-weight: bold;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+    width: 70%;
+}
+
+ul.as-selections li.as-original input {
+    width: 15em;
+}
+

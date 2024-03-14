@@ -1,0 +1,126 @@
+
+<h1><em>ldapuserdata</em> Instalation Guide</h1>
+
+<h2>Requirements</h2>
+
+<ul>
+
+<li>Squirrelmail <strong>1.4.0</strong> or greater. (Squirrelmail 1.2.x users
+can use version 0.2).</li>
+
+<li>Working Squirrelmail setup (meaning <a
+"http://www.squirrelmail.org/wiki/SquirrelMailRequirements">its
+requirements</a> are sufficed.</li>
+
+<li>Working LDAP Server. Tested with <a
+href="http://www.openldap.org">OpenLDAP</a>.  </ul>
+
+</li>
+
+
+
+<h2>Installation</h2>
+
+<p>Word of warning: This is one of them <em>intrusive plugins</em>, in that
+you'll have to change some Squirrelmail code.</p>
+
+
+<h3>Squirrelmail Preparation</h3>
+
+<ul>
+<li>Untar the distribution under the plugins directory of your Squirrelmail. You
+probably have already done this...</li>
+
+<li>If you are using Squirrelmail version 1.4.2 or previous, you must apply a
+small patch to the functions/prefs.php file:</li>
+
+<code>
+cd /var/www/squirrelmail/functions<br/>
+patch -p0 &lt; ../plugins/ldapuserdata/patches/prefs_backend.patch
+</code>
+
+<li>Edit Squirrelmail's config/config_local.php and add this line:</li>
+
+<code>
+$prefs_backend = 'ldap';
+</code>
+
+<li>Optional: Occasionally people on the Squirrelmail-devel mailing list have
+complained that there are too many options in the various options screens, and
+this is against usability and user-friendliness. Since part of the concept was
+to cut down on options anyway, you can also remove, i.e. comment-out, the
+options that are not used, in the files include/options/*.php. This will make
+these screens lighter and provide only the preferences that will be saved
+across sessions.<br /><br />
+The relevant files are provided here, if you wish to use the exact, provided
+schema.<br /><br />
+So, you can substitute the original <strong>include/options/*.php</strong>
+files with the ones provided in the directory options_screens; their purpose is
+to <strong>remove</strong> the functionality that is available to the user by
+removing the options that are not saved in LDAP.</li>
+
+</ul>
+
+
+
+<h3>OpenLDAP Preparation</h3>
+
+<ul>
+
+<li>Add squirrelmail.schema to your LDAP server. The file provided in
+doc/squirrelmail.schema is suitable for at least OpenLDAP 2.1.x. For
+information on how to add the schema, please consult the
+documenation of your LDAP server.</li>
+
+<li>Optionally, add a squirrelmail virtual user with read-only access in your
+LDAP tree. This is configurable in config.php. You can bind as Manager all the
+time and do the work; however, this is not a good practice, and the best thing
+would be to have a separate squirrelmail virtual user and the appropriate ACLs.
+There is also a need for an account with write access; this account must be
+able to write the Squirrelmail attributes, as well as update the user's
+objectClass.</li>
+
+</ul>
+
+
+<h3>LDAPuserdata Plugin configuration</h3>
+
+<ul>
+<li>Copy config_sample.php to config.php and edit accordingly to suit your
+preferences. The file is self-commented.<br /><br />
+Remember that for all variables, even those that are not part of the LDAP
+schema, you can always provide resonable and nice defaults in the
+$prefs_default array.</li>
+
+</ul>
+
+
+
+
+<h3>Advanced Configuration</h3>
+
+
+<ul>
+<li>If you need to define different IMAP servers for each user in LDAP, then
+you are probably using something like the schema of Perdition, which holds
+attributes for the user's mailhost. In that case, in your Squirrelmail
+configuration, you can set the IMAP server address to be
+<strong>'map:ldapuserdata_get_imapserveraddress'</strong>, i.e.:
+<tt>$imapServerAddress = 'map:ldapuserdata_get_imapserveraddress';</tt> </li>
+
+
+<li>If you'd like to use LDAP identities, then you can try using the supplied
+options_identities file. This file will replace the identities screen with one
+that displays the available email addresses from LDAP. You will also need to
+patch compose.php. These patches are provided with <strong>even less warranty than the
+rest of the plugin</strong> (which comes with no warranty as stated in the
+GPL!), as they come from a customized environment, and are only released in the
+hope that they could be useful to someone.</li>
+
+</ul>
+
+<p>Good luck... There might be some things I've left out, so please email
+squirrelmail-plugins list with questions. Feel free to Cc: me anyway so as to
+grab my attention. (<strong>Do</strong> read this manual first!).</p>
+
+

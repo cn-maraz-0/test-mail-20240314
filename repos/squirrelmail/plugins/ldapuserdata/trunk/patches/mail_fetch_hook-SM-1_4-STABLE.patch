@@ -1,0 +1,15 @@
+Index: setup.php
+===================================================================
+RCS file: /cvsroot/squirrelmail/squirrelmail/plugins/mail_fetch/setup.php,v
+retrieving revision 1.15.2.9
+diff -u -r1.15.2.9 setup.php
+--- setup.php	3 Feb 2006 22:27:52 -0000	1.15.2.9
++++ setup.php	19 Dec 2006 12:15:57 -0000
+@@ -205,6 +205,7 @@
+             if (is_array($mailfetch_uidl)) {
+                 setPref($data_dir,$username,"mailfetch_uidl_$i_loop", array_pop($mailfetch_uidl));
+             }
++            do_hook('mail_fetch_after_fetch');
+         }
+     }
+ 

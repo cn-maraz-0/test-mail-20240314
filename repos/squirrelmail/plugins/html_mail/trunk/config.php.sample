@@ -1,0 +1,60 @@
+<?php
+
+   global $customStyle, $use_spell_checker, 
+          $fully_loaded, $html_mail_aspell_path, $fck_spell_checker,
+          $default_aggressive_html_reply, 
+          $default_aggressive_reply_with_unsafe_images, 
+          $outgoing_image_uri_https, $default_html_editor_height;
+
+// Hardcoded, for compatibility reasons only.
+$editor_style = 3;
+
+   // default setting for "aggressive" replies in HTML format
+   // (user can override in their personal settings)
+   //
+   // 0 = only reply in HTML if user had been
+   //     viewing the message in HTML format
+   // 1 = always try to reply in HTML format if 
+   //     the message has an HTML part
+   // 
+   $default_aggressive_html_reply = 0;
+
+
+
+   // default setting for "aggressive" inclusion of unsafe
+   // images in replies in HTML format
+   // (user can override in their personal settings)
+   //
+   // 0 = only include unsafe images in HTML reply if 
+   //     user had been viewing the message in HTML 
+   //     format with unsafe images enabled
+   // 1 = always include any unsafe images in HTML replies
+   // 
+   $default_aggressive_reply_with_unsafe_images = 0;
+
+
+
+   // outgoing mails may have embedded images (emoticons,
+   // other images) that will be sent as URIs to your server
+   // should those image URIs be sent as HTTP, HTTPS, or the
+   // same as what the sender is using to log in with?
+   //
+   // 1 = HTTP
+   // 2 = HTTPS
+   //
+   // Or set to the port number that HTTPS is served on on
+   // your server to auto-sense and use whatever sender is 
+   // using.  For example:
+   //
+   // $outgoing_image_uri_https = 443;
+   //
+   $outgoing_image_uri_https = 1;
+
+
+
+   // this will set the editor window height default, which is 
+   // usually only needed if you run a version of SquirrelMail
+   // that is old enough not to have this setting in normal 
+   // user preferences
+   //
+   $default_html_editor_height = '20';

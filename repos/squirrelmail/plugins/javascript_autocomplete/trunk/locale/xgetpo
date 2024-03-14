@@ -1,0 +1,6 @@
+#!/bin/sh
+xgettext -L PHP --keyword=_ --no-location --default-domain=javascript_autocomplete \
+	../*.php \
+	../include/*.php \
+	-o javascript_autocomplete.pot
+

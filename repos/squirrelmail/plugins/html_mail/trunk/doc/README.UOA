@@ -1,0 +1,28 @@
+
+UoA fork of html_mail.
+
+(Provided by University of Athens, Network Operations Centre:
+http://www.noc.uoa.gr, http://email.uoa.gr )
+
+Features:
+
+* Uses a recent stable version of TinyMCE instead of FckEditor and htmlarea; therefore
+  supports many recent browsers.
+* Spellchecker that calls server's aspell (or even pspell php extension)
+  via AJAX and underlines typos like Word.
+* Compatible with quicksave plugin.
+* Removes some options for users that did not add to usability.
+
+TinyMCE Version:
+3.3.9.3
+
+
+Links:
+
+SVN Repository: https://email.uoa.gr/repos/squirrelmail/plugins/html_mail
+
+
+Homepage:
+
+http://email.uoa.gr
+

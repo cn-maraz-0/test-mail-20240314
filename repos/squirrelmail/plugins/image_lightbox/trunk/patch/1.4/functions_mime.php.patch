@@ -1,0 +1,13 @@
+Index: mime.php
+===================================================================
+--- mime.php	(revision 12337)
++++ mime.php	(working copy)
+@@ -526,7 +526,7 @@
+             } else {
+                 $attachments .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
+             }
+-            $attachments .= '<a href="' . $val['href'] . '">' .  $val['text'] . '</a>';
++            $attachments .= '<a href="' . $val['href'] . '"'. (isset($val['rel']) ? ' rel="'.$val['rel'].'"' : '') .'>' .  $val['text'] . '</a>';
+         }
+         unset($links);
+         $attachments .= "</td></tr>\n";

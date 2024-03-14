@@ -1,0 +1,11 @@
+#!/bin/sh
+for dir in `ls -1d ../locale/?????`
+do
+    if test -f $dir/LC_MESSAGES/javascript_autocomplete.po ; then
+        mv $dir/LC_MESSAGES/javascript_autocomplete.po $dir/LC_MESSAGES/javascript_autocomplete.po.bak
+        echo "msgmerge $dir/LC_MESSAGES/javascript_autocomplete.po.bak javascript_autocomplete.pot > $dir/LC_MESSAGES/javascript_autocomplete.po";
+        msgmerge $dir/LC_MESSAGES/javascript_autocomplete.po.bak javascript_autocomplete.pot > $dir/LC_MESSAGES/javascript_autocomplete.po
+    fi
+done
+
+     

@@ -1,0 +1,254 @@
+###########################################################################
+#
+# -- Squirrelmail Internal Schema --
+# 
+# This schema holds the Squirrelmail attributes that are to be saved in LDAP
+# and is used by the "ldapuserdata" Squirrelmail plugin
+# (http://email.uoa.gr/projects/squirrelmail/ldapuserdata.php)
+# 
+# Authors: Alexandros Vellis <avel@noc.uoa.gr>
+#          Nikos Voutsinas <nvoutsin@noc.uoa.gr>
+#
+# Version: 1.8 - 20/1/2011
+#
+# ldapuserdata VC: $Id: squirrelmail.schema,v 1.4 2006/09/28 13:00:31 avel Exp $
+#
+# Changelog
+#     1.8 - Added smOptions multivalue attribute
+#     1.7 - Added editor_size and editor_height
+#     1.6 - Added attributes for preview_pane plugin
+#     1.5 - Added newMail attribute for newmail plugin
+#     1.4 - Fixed chosenTheme OID (was wrong)
+#         - Added composeWindowType for html_mail plugin
+#     1.3 - Changed OID to the one assigned to UOA NOC.
+#
+#
+###########################################################################
+
+
+# Display
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.1 NAME 'chosenTheme'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.2 NAME 'customCss'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.3 NAME 'language'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.4 NAME 'javascriptSetting'
+        EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.5 NAME 'saveOptionJavascriptAutodetect'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.6 NAME 'showNum'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.7 NAME 'useJavascriptAddrBook'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.8 NAME 'includeSelfReplyAll'
+        EQUALITY booleanMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.10 NAME 'mdnUserSupport'
+        EQUALITY booleanMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.11 NAME 'composeNewWin'
+        EQUALITY booleanMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.51 NAME 'editorSize'
+        EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.52 NAME 'editorHeight'
+        EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+
+# Folder
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.12 NAME 'trashFolder'
+        EQUALITY caseExactMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.13 NAME 'sentFolder'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.14 NAME 'draftFolder'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.15 NAME 'locationOfBar'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.16 NAME 'leftSize'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.17 NAME 'leftRefresh'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.18 NAME 'unseenNotify'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.19 NAME 'unseenType'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+# Highlight
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.20 NAME 'hililist'
+        EQUALITY caseExactMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+# Index Order
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.30 NAME 'order1'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.31 NAME 'order2'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.32 NAME 'order3'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.33 NAME 'order4'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.34 NAME 'order5'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.35 NAME 'order6'
+        EQUALITY integerMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+
+# Personal
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.36 NAME 'replyTo'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.37 NAME 'signature'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.38 NAME 'timezone'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.39 NAME 'replyCitationStyle'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.40 NAME 'replyCitationStart'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.41 NAME 'replyCitationEnd'
+        EQUALITY caseExactMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.42 NAME 'useSignature'
+        EQUALITY booleanMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
+
+# POP3 Fetch
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.43 NAME 'mailFetch'
+        DESC 'MultiValue attribute holding POP3 fetch settings'
+	EQUALITY caseIgnoreIA5Match
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+
+# User's preferred attributes for the multivalue ones: name & mail.
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.44 NAME 'mailPreferred'
+    EQUALITY caseIgnoreIA5Match
+    SUBSTR caseIgnoreIA5SubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.21 NAME 'cnPreferred'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+
+# html_mail plugin
+# compose_window_type == plain | html
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.45 NAME 'composeWindowType'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+
+# newmmail plugin
+# serialized array of all the newmail configuration attributes
+attributetype ( 1.3.6.1.4.1.16375.10.5.46 NAME 'newMail'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+
+# preview_pane plugin
+# Mostly useful!
+attributetype ( 1.3.6.1.4.1.16375.10.5.47 NAME 'usePreviewPane'
+        EQUALITY booleanMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.48 NAME 'previewPaneVerticalSplit'
+        EQUALITY booleanMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.49 NAME 'previewPaneSize'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.16375.10.5.50 NAME 'previewPaneRefreshList'
+    EQUALITY booleanMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
+
+# all other settings / options
+# multivalued
+attributetype ( 1.3.6.1.4.1.16375.10.5.53 NAME 'smOptions'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+#objectClass SquirrelMailUser
+#       requires
+#       allows
+
+objectclass ( 1.3.6.1.4.1.16375.10.5.100 NAME 'SquirrelMailUser' 
+	SUP top AUXILIARY
+	DESC 'Additional attributes for WebMail Users'
+	MAY ( chosenTheme $ customCss $ language $ javascriptSetting
+	$ saveOptionJavascriptAutodetect $ showNum $ useJavascriptAddrBook
+	$ includeSelfReplyAll $ mdnUserSupport $ composeNewWin 
+	$ editorSize $ editorHeight
+	$ trashFolder $ sentFolder $ draftFolder $ locationOfBar $ leftSize
+	$ leftRefresh $ unseenNotify $ unseenType $ hililist $ order1 $ order2
+	$ order3 $ order4 $ order5 $ order6 $ replyTo $ signature $ timezone
+	$ replyCitationStyle $ replyCitationStart $ replyCitationEnd
+	$ useSignature $ mailFetch $ mailPreferred $ cnPreferred
+	$ composeWindowType $ newMail $ usePreviewPane $ previewPaneVerticalSplit
+	$ previewPaneSize $ previewPaneRefreshList $ smOptions) )
+

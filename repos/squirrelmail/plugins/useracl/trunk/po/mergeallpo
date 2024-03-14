@@ -1,0 +1,9 @@
+#!/bin/sh
+for dir in `ls -1d ../../../locale/?????`
+do
+	cp $dir/LC_MESSAGES/useracl.po $dir/LC_MESSAGES/useracl.po.bak
+	echo "Executing: msgmerge $dir/LC_MESSAGES/useracl.po.bak useracl.pot > $dir/LC_MESSAGES/useracl.po";
+	msgmerge $dir/LC_MESSAGES/useracl.po.bak useracl.pot > $dir/LC_MESSAGES/useracl.po
+done
+
+     

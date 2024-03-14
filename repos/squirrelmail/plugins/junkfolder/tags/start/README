@@ -1,0 +1,52 @@
+/*
+ * JunkFolder plugin for Squirrelmail 1.4+
+ *
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * and Alexandros Vellis <avel@users.sourceforge.net>
+ *
+ * Licensed under the GNU GPL. For full terms see the file COPYING that came
+ * with the Squirrelmail distribution.
+ *
+ * Also view plugins/README.plugins for more information.
+ *
+ * $Id: README,v 1.1.1.1 2003/10/02 15:55:02 avel Exp $
+ */
+
+
+Purpose: Mark a Junk Folder as special, and display a message in that folder
+for its purpose. Also allow user to create easily this folder.
+
+The Junk Folder Plugin can allow the user to easily create a junk folder, with
+a click on a button in the Folders page. Of course, you can set your autocreate
+configuration on Cyrus to automatically create that folder and subscribe the
+user to it too.
+
+Junk Folder plugin does not handle the automatic purging itself; you must
+configure your IMAP server to do so.  See ipurge(8) of the Cyrus IMAP
+distribution for more information on how to set up automatic purging after a
+given period on Cyrus.
+
+The plugin is localizable. You can send me a translation of the plugin's
+messages to your own language and they will be included in the next release.
+Send .po files to: avel@users.sourceforge.net.
+
+Download new versions from:
+
+
+Or use anonymous CVS:
+
+$ export CVSROOT=":pserver:anoncvs@email.uoa.gr:/squirrelmail"
+$ cvs login  # (Press enter when asked for password)
+$ cvs co junkfolder
+
+
+
+Alexandros Vellis
+National and Kapodistrian University of Athens
+Network Operations Centre
+
+Home Page: http://www.noc.uoa.gr/~avel/
+Various Mail Projects Page: http://email.uoa.gr/
+
+Email: avel@users.sourceforge.net
+

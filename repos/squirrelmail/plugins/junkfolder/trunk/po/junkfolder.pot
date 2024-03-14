@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-27 17:02+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Warning"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "days"
+msgstr ""
+
+msgid "Notice: This is your Junk Folder."
+msgstr ""
+
+#, php-format
+msgid ""
+"Messages older than %s %s will be automatically removed from this folder."
+msgstr ""
+
+msgid ""
+"The amount of time that messages will stay in this folder has not been set "
+"yet."
+msgstr ""
+
+#, php-format
+msgid "The default number of %s days will be used instead."
+msgstr ""
+
+#, php-format
+msgid ""
+"This means that messages older than %s %s will be automatically removed from "
+"this folder."
+msgstr ""
+
+msgid "You can set the number of days in the"
+msgstr ""
+
+msgid "Folder Options Page"
+msgstr ""
+
+msgid "Junk Folder"
+msgstr ""
+
+msgid ""
+"The Junk Folder is a special type of folder that you can use to store Junk "
+"Mail such as SPAM (unsolicited mails)."
+msgstr ""
+
+msgid ""
+"Messages are never removed automatically from this folder. Note that if you "
+"have set this folder in your SPAM rule, it can grow quickly and you'll have "
+"to delete the emails manually. You can set messages older than a defined "
+"number of days to be deleted automatically."
+msgstr ""
+
+msgid "Junk Folder already exists."
+msgstr ""
+
+msgid "View Junk Folder contents"
+msgstr ""
+
+msgid "Create Junk Folder"
+msgstr ""
+
+msgid ""
+"Note that the Junk Folder will be autocreated, if you have configured a "
+"filter to place messages in it."
+msgstr ""
+
+msgid "Junk Folder Options"
+msgstr ""
+
+msgid ""
+"Messages older than this number, in days, will be purged from the Junk Folder"
+msgstr ""
+
+msgid "Never"
+msgstr ""

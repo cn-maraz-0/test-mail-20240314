@@ -1,0 +1,107 @@
+<h1>AnnotateMore: Server and Folder Annotations Plugin for Squirrelmail</h1>
+
+<img src="annotatemore/sample_server_annotations.png" style="float:left; padding: 1.5em;"
+alt="Sample Annotations Tree "/>
+
+<h2><a name="desc">Description</a></h2>
+
+<p>This little plugin provides a library with functions that help work with IMAP
+server and mailbox annotations as defined in <a
+href="http://ietfreport.isoc.org/idref/draft-ietf-imapext-annotate/">[ANNOTATEMORE]</a>.
+
+<p>A test program, <code>annotate_tests.php</code>, is provided, in order to
+check how the functions work. It shows the internal structure of the arrays
+that are being made available to the developer. It also provides a simple
+interface to add a new annotation.</p>  
+
+<p>Tested with <strong>Cyrus IMAPd 2.3.1+CVS</strong>. Should work with Cyrus
+IMAPd version &gt;= 2.2.0, or any server that implements <a
+href="http://ietfreport.isoc.org/idref/draft-ietf-imapext-annotate/">[ANNOTATEMORE]</a>
+
+
+<p>The screenshot shows the internal tree structure that is available to the
+programmer after he has retrieved the annotations from the server with 
+<code>sqimap_get_annotation($imapConnection, '*', '/*', '*',
+<strong>true</strong>)</code>. The server in question is Cyrus IMAPd 2.3.
+(Note: the tree was created in DHTML using <a
+href="http://www.destroydrop.com/javascripts/tree/">dTree 2.05</a>) by Geir
+Landr&ouml;.</p>
+
+
+<h2><a name="install">Installation</a></h2>
+
+<p>To install the library functions, simply untar the archive under
+Squirrelmail's plugin directory:</p>
+
+<pre class="code">
+$ cd /path/to/squirrelmail/plugins
+$ tar -zxvf /path/to/annotatemore-0.1.tar.gz
+</pre>
+
+<p><strong>Do not enable</strong> the plugin in Squirrelmail's configuration,
+if you are in a production environment.</p>
+
+<p><strong>Only enable the plugin</strong> if you want to check if the IMAP
+server supports annotations, and to enable the demonostration that displays
+current annotations in a tree-fashion. Developers of other plugins or code that
+want to use annotations can and should enable the plugin, in order to have the
+mailbox and server annotations handy for debugging and testing purposes.
+Enabling the plugin will provide you with an &quot;Annotations&quot; link,
+which will link to the test page.</p>
+
+<h2><a name="documents">Documents</a></h2>
+
+<p>IETF Internet Drafts that this work was based on:</p>
+
+<ul>
+<li><a href="http://ietfreport.isoc.org/idref/draft-ietf-imapext-annotate/">[ANNOTATEMORE]</a></li>
+<li><a href="http://ietfreport.isoc.org/idref/draft-daboo-imapext-annotate/">[ANNOTATE]</a></li>
+</ul>
+
+<p>[ANNOTATE] contains some information and hints with regard to the .priv and
+.shared flags, which is also valid for [ANNOTATEMORE].</p>
+
+
+<h2><a name="download">Download</a></h2>
+
+<p>Please see the <a href="annotatemore_download.php">download page</a> for
+more details.</p>
+
+<p>The latest, experimental sources are always available via anonymous CVS:
+(press enter when asked for a password)</p>
+
+<pre class="code">
+cvs -d:pserver:anoncvs@email.uoa.gr:/squirrelmail login
+cvs -z3 -d:pserver:anoncvs@email.uoa.gr:/squirrelmail co annotatemore
+</pre>
+
+<p>There is also the <a
+href="http://email.uoa.gr/cgi-bin/viewcvs.cgi/annotatemore">ViewCVS
+interface</a> to the repository.</p>
+
+
+
+<h2><a name="links">Links</a></h2>
+
+<p><a href="http://pear.php.net/get/Net_IMAP">PEAR's Net_IMAP classes</a> also
+support ANNOTATEMORE.</p>
+
+<p>The ANNOTATEMORE and related meta-data on IMAP discussions is discussed
+between the <a
+href="http://www.ietf.org/html.charters/imapext-charter.html">IETF IMAPExt
+Working Group</a> members, on the <a
+href="http://www.imc.org/ietf-imapext/">IETF-IMAPExt mailing list</a>.</p>
+
+<p>AnnotateMore plugin uses Geir Landr&ouml;'s <a
+href="http://www.destroydrop.com/javascripts/tree/">dTree 2.05</a> for showing
+the annotations tree in <code>annotate_tests.php</code>.</p>
+
+
+<h2><a name="author">Author</a></h2>
+
+<p>Alexandros Vellis<br/>
+Email: avel &#64; noc.uoa.gr<br/>
+<a href="http://www.uoa.gr">National and Kapodistrian University of Athens</a>,
+<a href="http://www.noc.uoa.gr">Network Operations Centre</a><br/>
+<a href="http://email.uoa.gr">http://email.uoa.gr</a>
+

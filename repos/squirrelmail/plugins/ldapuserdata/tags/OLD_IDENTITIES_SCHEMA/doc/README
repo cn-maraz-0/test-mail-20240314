@@ -1,0 +1,122 @@
+
+                     ldapuserdata plugin for Squirrelmail
+
+   Based on the [1]SquirrelMail [2]Retrieve User Data Plugin (0.4/0.5)
+   by Ralf Kraudelt (kraude at wiwi.uni-rostock.de)
+
+Introduction
+
+   Originally there were two preferences backend stores for Squirrelmail:
+   the standard backend stores users' profile/preferences in text files
+   (file_prefs.php), and the MySQL one stores them in a MySQL database
+   (db_prefs.php).
+
+   This plugin adds an LDAP backend. However, things are treated much
+   differently, due to the difference in nature between LDAP and other
+   databases. Namely: LDAP writes are expensive. Extensive caching is
+   used to reduce the overhead on the LDAP server, especially in a setup
+   with a lot of users.
+
+   This makes a big difference, from the user's point of view. Whenever
+   changing some option, the change is for the current session only. The
+   change will only be saved permanently, if and only if the user logs
+   out from Squirrelmail, thus ending the session.
+
+   If having automatically saved preferences is important, then this
+   plugin might not be for you. (Or you can modify setPref() to write
+   back the changes to LDAP immediately and be prepared for a heavy
+   loaded LDAP server).
+
+   Why put the user's profile in LDAP, in the first place?
+   Centralization. There is a centralized store for preferences. If you
+   have multiple webmail machines, they all get the same preferences for
+   each user (one can achieve this with the MySQL backend too). No need
+   for NFS'ing the data directory. Also, if you use LDAP, you connect to
+   the Directory server anyway, to get the cn (real name), mail (email
+   address) and possibly mailHost (IMAP server address to connect to).
+   Even if there are applications other than squirrelmail that need this
+   data in the future, they can get them. Last but not least, the
+   complexity is reduced in that a single database is used; no other text
+   files nor MySQL databases that all have some common information with
+   LDAP.
+
+   Here's a poor attempt for a block diagram of what happens behind the
+   curtains:
+
+   ldapuserdata logical diagram
+
+  Things to Note
+
+   Note that there are some issues that should be taken into
+   consideration when using ldapuserdata.
+     * New/other plugins cannot just add preference variables and expect
+       these to be saved. As long as they are not in the schema, they
+       will only survive for the current user session and will be lost
+       when the user logs out.
+     * Some preferences have been changed: specifically some options that
+       we don't intend to allow changing, are not saved. Our
+       include/options/*.php have been modified to show these changes.
+       And yes, this is a feature. ldapuserdata is intended for a fully
+       scalable mail system that will accomodate thousands of users.
+
+Other Plugins of Interest
+
+   The ldapuserdata plugin itself was originally based on [3]Ralf
+   Kraudelt's retrieveuserdata plugin (v0.4).
+
+   If you are looking for a solution based on MySQL, use the MySQL
+   backend for Squirrelmail and additionally the MySQL module from
+   retrieveuserdata.
+
+   If you are just interested in getting the Name and Email address for
+   an account from LDAP, just use retrieveuserdata.
+
+   However, if you are interested in storing the user's preferences in an
+   LDAP Directory, as well as authenticating the user to the Directory,
+   this plugin might be what you were looking for.
+
+TODO
+
+     * Think of a nice algorithm that saves the preferences occasionally,
+       esp. when it is needed. This will raise the usability of this
+       plugin very much. For instance, it can be made to save the changes
+       to LDAP whenever a submit button from the preferences screens is
+       pressed.
+     * More beta testing!
+
+Support
+
+   If you need help with this plugin, or have any comments and
+   suggestions, please post a message to [4]squirrelmail-plugins mailing
+   list. Feel free to Cc: me anyway so as to grab my attention.
+
+Author
+
+
+    [5]Alexandros Vellis
+    [6]Network Operations Centre, [7]National and Kapodistrian
+    University of Athens
+    [8]email.uoa.gr Project Pages
+    [9]Personal home page
+
+Credits
+
+     * Based on retrieveuserdata code from [10]Ralf Kraudelt. Many thanks
+       for giving me a code base to start from.
+     * Nikos Voutsinas (nvoutsin at noc uoa gr), for helping out with the
+       LDAP schema, and for bug reports and constructive criticism et
+       cetera et cetera...
+     * Maria Nassiakou for bringing us ice cream.
+
+References
+
+   1. http://www.squirrelmail.org/
+   2. http://www.squirrelmail.org/plugin_view.php?id=11
+   3. mailto:kraude@wiwi.uni-rostock.de
+   4. http://lists.sourceforge.net/lists/listinfo/squirrelmail-plugins
+   5. mailto:avel@users.sourceforge.net
+   6. http://www.noc.uoa.gr/
+   7. http://www.uoa.gr/
+   8. http://email.uoa.gr/
+   9. http://www.noc.uoa.gr/~avel/
+  10. mailto:kraude@wiwi.uni-rostock.de

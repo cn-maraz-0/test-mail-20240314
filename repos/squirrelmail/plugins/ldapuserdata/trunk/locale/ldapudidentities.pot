@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-04-21 16:22+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Options"
+msgstr ""
+
+msgid "Advanced Identities"
+msgstr ""
+
+msgid ""
+"This page allows you to choose between a default mail identity for this "
+"system, and one of the identities which you have been authorized to send "
+"mail as."
+msgstr ""
+
+msgid ""
+"Authorized mail identities are provided by the mail administrators on "
+"demand, in order to allow certain users to use third-party or non-returnable "
+"addresses."
+msgstr ""
+
+msgid ""
+"Note that you can always choose a specific identity <em>on-the-fly</em>, "
+"while composing a new mail."
+msgstr ""
+
+msgid "Main Identity"
+msgstr ""
+
+msgid ""
+"This is your main identity. You can choose from one of the alternate mail "
+"addresses that have been provided for your exclusive personal use:"
+msgstr ""
+
+msgid ""
+"Also, you can choose between the following names, to be displayed together "
+"with your email address:"
+msgstr ""
+
+msgid ""
+"Your selection on these options can be made in the Personal Options Page."
+msgstr ""
+
+msgid "Authorized Identities"
+msgstr ""
+
+msgid ""
+"The rest of the identities have been provided as a means for you to send "
+"mail using specific names and addresses. If other users on the Internet "
+"reply to you while you have used these email addresses, <em>it is not "
+"certain that the mail will return to the mailbox of this specific account</"
+"em>; <strong>you will have to check that specific mail account, or set up "
+"mail forwarding accordingly, by yourself</strong>. Also, it is possible that "
+"other users on this system or in the Internet are using the same email "
+"addresses as these."
+msgstr ""
+
+#, php-format
+msgid ""
+"For more information about authorized identities, please contact our support "
+"staff at: %s"
+msgstr ""
+
+msgid "Authorized Identity:"
+msgstr ""
+
+#, php-format
+msgid "Uses the name &quot;<em>%s</em>&quot;"
+msgstr ""
+
+msgid "The following names have been authorized for this email address:"
+msgstr ""
+
+msgid "Update Identity Selection"
+msgstr ""

@@ -1,0 +1,14 @@
+
+* 2.3-1.4-uoa-1.1svn
+  
+  * Added html_mail_browser_info() function so that this plugin will be autonomous and
+    easy to install.
+  * rename incorrectly-named html_mail_disable_squirrelspell_do() to
+    html_mail_compose_form_do()
+  * implement a hack that displays a hint, when resuming a draft, editing as
+    new or forwarding (inline) an e-mail with a multipart body.
+
+* 2.3-1.4-uoa-1.0 (February 2010)
+  * Initial announcement in squirrelmail-plugins list.
+
+
