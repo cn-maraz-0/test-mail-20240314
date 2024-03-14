@@ -1,0 +1,10 @@
+#!/bin/sh
+for dir in `ls -1d ../locale/?????`
+do
+	echo "Deleting $dir/LC_MESSAGES/addressbook_ui_enhancements.po.bak"
+	rm -f $dir/LC_MESSAGES/addressbook_ui_enhancements.po.bak
+
+done
+
+     
+     

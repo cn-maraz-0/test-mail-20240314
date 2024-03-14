@@ -1,0 +1,2 @@
+#!/bin/sh
+msgfmt -c -v -o addressbook_ui_enhancements.mo addressbook_ui_enhancements.po

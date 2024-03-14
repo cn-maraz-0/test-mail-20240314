@@ -1,0 +1,46 @@
+Installing Plugin
+=================
+
+1 ) Simply untar the file in the plugins directory, and make sure it is in its
+    own directory, and that the name of the directory is the name of the
+    plugin.
+
+        # cd plugins
+        # tar -zxvf ldap_abook_backend.0.2.2-1.4.5.tar.gz
+
+2 ) Version before 1.4.5 requires patching for address book hooks. Go to the main
+    directory of your SquirrelMail installation and the apply
+    addressbook.php.patch.
+
+	# cd /path/to/squirrelmail
+	$ patch -p1 <plugins/ldap_abook_backend/addressbook.php.patch
+
+3 ) Then go to your config directory and run conf.pl.  Choose option 8 and add
+    the plugin.  Save and exit, then that should be all if the plugin was made
+    correctly.  :)
+
+        # cd ../config
+        # ./conf.pl
+
+4 ) Download and install ldap_common plugin. It should not be enabled via
+    conf.pl, but the plugins/ldap_common directory should exist, since common
+    files will be included from there.
+
+5 ) Create and edit your own config.php
+
+        # cd ldap_abook_backend
+        # cp config_sample.php config.php 
+
+6 ) You should decide if a manager account will be used to access Personal
+    Addressbook Entries in LDAP, or the plugin binds with the found mail account
+    object's DN and password. This is configurable via the $ldapAbookUseSelfAuth
+    parameter in config.php.
+
+    Dedicated manager account is a good choice if your users can access the LDAP
+    server directly, but you don't want them to modify Addressbook from outside.
+    The drawback of a dedicated manager account is that its password should be
+    stored in config.php.
+
+    Read SECURITY file for ACL examples.
+
+    Don't forget to restart your LDAP server after modifying ACL!

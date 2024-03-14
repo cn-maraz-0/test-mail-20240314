@@ -1,0 +1,7 @@
+* Provide different parameters for searching the DN of the current user
+  and for searching the DN of that object under which entries are stored.
+  This would useful if mail account objects are stored in a completely
+  different branch of the LDAP tree than the address book entries.
+  $ldapAbookBindBase, $ldapAbookBindFilter
+
+* Handle somehow multi-value attributes.

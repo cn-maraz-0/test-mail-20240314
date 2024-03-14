@@ -1,0 +1,7 @@
+#!/bin/sh
+for dir in `ls -1d ../locale/?????`
+do
+    echo "Running msgfmt -o $dir/LC_MESSAGES/addressbook_ui_enhancements.mo $dir/LC_MESSAGES/addressbook_ui_enhancements.po"
+    msgfmt -c -v -o $dir/LC_MESSAGES/addressbook_ui_enhancements.mo $dir/LC_MESSAGES/addressbook_ui_enhancements.po
+    
+done

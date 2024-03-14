@@ -1,0 +1,52 @@
+Search LDAP database plugin for SquirrelMail
+----------------------------------------------
+Brent Bice, bbice@persistence.com
+Ver 1.0, Jun 6 2001 
+Ver 1.2, Oct 14 2001
+Ver 1.5, Mar 7 2002
+
+This is the simplest of simple plugins - in fact, it's my FIRST plugin ever.
+It allows the user to search the Directory Servers (if any are installed)
+by name and see more of the record than just email address. 
+
+I wrote it because several of my happy squirrel users also wanted to use the
+LDAP server remotely to look up phone numbers, addresses, and other data.
+But I didn't want to go to the hassle of making PHP do RADIUS requests for
+authentication or to have to open up an IMAP session just to authenticate
+the user.  I also didn't want to store authentication information in the
+LDAP database so I couldn't use IT to authenticate the user. (grin)
+
+There are a few things you need to define in config.php. The first is a
+variable telling ldapquery if your LDAP server requires authentication or
+not.  If so, just set $ldq_authreqd to true and the search form will have
+a User DN and Password field as well as the normal fields.
+
+There are also 3 arrays you need to define in config.php.  The ldq_attributes
+array contains the list of attribute strings you want the plugin to search
+for (things you will permit the user to selectively view in their output).
+
+The ldq_searchobjs array contains the list of objectclasses and a textual
+description of the objectclass that you want the user to be able to search
+FOR.  For instance, the default array contains:
+$ldq_searchobjs = array ("People"=>"person", "Any"=>"*");
+Which means the user will be presented with a pull-down list of "People" and
+"Any". If they select "People", the searches will be limited to only
+records with an objectclass of "person".  If any, the search is unlimited
+since it'll find any record with any objectclass.
+
+The ldq_searchattrs array is similar but contains a list of attributes and
+textual descriptions to let the user search BY. This is so you can let user
+select "Name" from a pulldown and the plugin will know the filter will be
+cn=<something> or they can select E-mail and the plugin will know the search
+filter will be mail=<something>. Why make this separate from ldq_attributes?
+Well, if your LDAP database is really big, and you don't have indexes generated
+for every attribute you might not want the user to be able to search by
+some attributes. I'm still considering merging ldq_searchattrs and
+ldq_attributes, so if you'd prefer keeping them separate like this to limit
+what the user can search by, please email me and let me know.
+
+Brent Bice
+Persistence Software Inc.
+http://www.persistence.com/
+bbice@persistence.com
+

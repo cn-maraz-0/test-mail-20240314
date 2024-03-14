@@ -1,7 +1,0 @@
-diff -r1.62.2.1 prefs.php
-32c32,34
-< if (isset($prefs_dsn) && !empty($prefs_dsn)) {
----
-> if (isset($prefs_backend) && file_exists(SM_PATH . $prefs_backend)) {
->     require_once(SM_PATH . $prefs_backend);
-> } elseif (isset($prefs_dsn) && !empty($prefs_dsn)) {

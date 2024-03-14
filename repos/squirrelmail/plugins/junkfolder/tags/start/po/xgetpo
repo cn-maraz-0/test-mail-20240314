@@ -1,2 +1,0 @@
-#!/bin/sh
-xgettext -C --keyword=_ --default-domain=junkfolder ../*.php --output-dir=../po

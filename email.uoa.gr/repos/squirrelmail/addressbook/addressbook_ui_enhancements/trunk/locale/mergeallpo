@@ -1,0 +1,10 @@
+#!/bin/sh
+for dir in `ls -1d ../locale/?????`
+do
+	mv $dir/LC_MESSAGES/addressbook_ui_enhancements.po $dir/LC_MESSAGES/addressbook_ui_enhancements.po.bak
+	echo "msgmerge $dir/LC_MESSAGES/addressbook_ui_enhancements.po.bak addressbook_ui_enhancements.pot > $dir/LC_MESSAGES/addressbook_ui_enhancements.po";
+	msgmerge $dir/LC_MESSAGES/addressbook_ui_enhancements.po.bak addressbook_ui_enhancements.pot > $dir/LC_MESSAGES/addressbook_ui_enhancements.po
+
+done
+
+     

@@ -1,2 +1,0 @@
-#!/bin/sh
-msgfmt -c -v -o useracl.mo useracl.po

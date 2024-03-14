@@ -1,0 +1,54 @@
+0.2.2	2006-01-08
+
+    * Fixed incorrect password handling in self auth mode. Now the plugin is
+      compatible with abook_import_export.
+      (thanks to Patrick Scharrenberg for the bugfix)
+
+0.2.1	2005-05-31
+
+    * Bugfixes
+
+0.2.0	2005-04-23
+
+    * ACL examples in the documentation.
+
+    * Improved error messages.
+
+    * Can validate email address.
+
+    * UTF-8 encoding and decoding of LDAP attribute names and values.
+
+    * Can use special characters in nickname (and DN). 
+      Characters that can appear in nickname: ,;<>+\"
+
+    * Protocol LDAPv3 is the default from now.
+
+    * Added a little php tool that can convert SM *.abook files to LDIF.
+      (convert_abook.php)
+
+0.2pre1	2005-04-10
+
+    * Debug log.
+
+    * Improved i18n.
+
+    * Hungarian translation.
+
+    * LDAP options ($ldapAbookOptions) expects options names as strings
+      instead of PHP constant names.
+
+    * Dedicated address book container object (plugin automatically creates
+      missing container object).
+
+    * Self auth mode works.
+
+    * Modifying entry works without recreating the object, it also preserves
+      those attributes that does not belong to SM. It even works when rename
+      is necessary. In that case first it creates the new object and deletes
+      the old one only if add was successful.
+
+    * Many minor bug-fixes.
+
+0.1     2005-04-01
+
+    * Initial release for beta testing.

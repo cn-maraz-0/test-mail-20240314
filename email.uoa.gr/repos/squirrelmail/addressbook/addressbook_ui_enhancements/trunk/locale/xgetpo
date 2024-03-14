@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo -n "Building template for addressbook_ui_enhancements..."
+xgettext -L PHP --keyword=_ --no-location --default-domain=addressbook_ui_enhancements \
+	../*.php \
+	../include/*.php \
+	-o addressbook_ui_enhancements.pot
+echo "Done."
+
+

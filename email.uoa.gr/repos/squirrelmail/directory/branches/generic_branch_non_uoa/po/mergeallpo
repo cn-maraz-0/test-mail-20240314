@@ -1,0 +1,13 @@
+#!/bin/sh
+for dir in `ls -1d ../locale/??_??`
+do
+	mv $dir/LC_MESSAGES/directory.po $dir/LC_MESSAGES/directory.po.bak
+	echo "Executing: msgmerge $dir/LC_MESSAGES/directory.po.bak directory.pot > $dir/LC_MESSAGES/directory.po";
+	msgmerge $dir/LC_MESSAGES/directory.po.bak directory.pot > $dir/LC_MESSAGES/directory.po
+
+	mv $dir/LC_MESSAGES/directory_editprofile.po $dir/LC_MESSAGES/directory_editprofile.po.bak
+	echo "Executing: msgmerge $dir/LC_MESSAGES/directory_editprofile.po.bak directory_editprofile.pot > $dir/LC_MESSAGES/directory_editprofile.po";
+	msgmerge $dir/LC_MESSAGES/directory_editprofile.po.bak directory_editprofile.pot > $dir/LC_MESSAGES/directory_editprofile.po
+done
+
+     

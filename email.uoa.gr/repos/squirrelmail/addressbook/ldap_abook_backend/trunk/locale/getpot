@@ -1,0 +1,3 @@
+#!/bin/sh
+xgettext --keyword=_ --default-domain=ldap_abook_backend \
+    --no-location -C ../*.php --output=ldap_abook_backend.pot

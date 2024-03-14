@@ -1,0 +1,108 @@
+body {
+  background: white;
+  background-position: top left;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding: 2em 1em 2em 70px;
+  margin: 0;
+  color: black;
+  font-family: "trebuchet ms", tahoma, verdana, arial, sans-serif;
+  font-size: 12px;
+}
+a:link {
+	text-decoration: none;
+	color: #00f;
+	border: none 1px;
+	margin: 1px;
+	}
+a:hover {
+	/*
+	color: black;
+	color: #3B3496;
+	text-decoration: underline;
+	*/
+	background: #cbfffe;
+	text-decoration: none;
+	}
+a:visited {
+	color: #01f;
+	text-decoration: none;
+	}
+a:active {
+	background: transparent;
+	}
+.box {
+	display: block;
+	background: transparent;
+	border: none;
+	text-align: left;
+}
+h1 {
+	text-align: center;
+	font-family: verdana, lucida, helvetica, sans-serif;
+	font-size: 2.0em;
+	}
+h2 {
+	/* font-style: italic; */
+        font-weight: bold;
+	font-family: tahoma, lucida, helvetica, sans-serif;
+	border: thin solid silver;
+	color: inherit;
+	background-color: #EEEEEE;
+	}
+#maxbutton {
+	display: block;
+	position: fixed top right absolute;
+	margin-left: auto;
+	/*
+	margin-right: 2px;
+	margin-top: 2px;
+	 */
+	text-align: right;
+}
+h3 {
+	font-weight: bold;
+	font-family: verdana, helvetica, sans-serif;
+	background-color: white;
+}
+dl dt {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 0.8em;
+	}
+DIV.center {
+	text-align: center;
+	}	
+.footer {
+	display: block;
+	font-size: 0.7em;
+	}
+.note {
+	font-size: 0.8em;
+	}
+.desc {
+	font-size: 0.9em;
+	}
+.floatleft {
+	float: left;
+	clear: right;
+	}
+.floatright {
+	float: right;
+	clear: left;
+	}
+.active {
+	font-size: 1.1em;
+	color: green;
+	background-color: transparent;
+}
+.inactive {
+	font-size: 0.9em;
+}
+	
+@media print {
+	.myschema {
+		border-width: 3px !important;
+	}
+}
+

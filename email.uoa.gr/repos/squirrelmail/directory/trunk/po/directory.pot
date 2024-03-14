@@ -1,0 +1,414 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-28 16:38+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Directory Service"
+msgstr ""
+
+msgid "Browse"
+msgstr ""
+
+msgid "Add New Organizational Unit"
+msgstr ""
+
+msgid "You have to define at least one search term."
+msgstr ""
+
+msgid "Any"
+msgstr ""
+
+#, php-format
+msgid "Could not connect to LDAP server %s"
+msgstr ""
+
+#, php-format
+msgid "Unable to bind to LDAP server %s"
+msgstr ""
+
+msgid "Directory"
+msgstr ""
+
+msgid "Error Encountered"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search For"
+msgstr ""
+
+msgid "Criteria"
+msgstr ""
+
+msgid "and"
+msgstr ""
+
+msgid "Restrict:"
+msgstr ""
+
+msgid "Choose Multiple Organizational Units"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Affiliation"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Sort By:"
+msgstr ""
+
+msgid "l"
+msgstr ""
+
+msgid "Less..."
+msgstr ""
+
+msgid "m"
+msgstr ""
+
+msgid "More..."
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Search Results"
+msgstr ""
+
+msgid "No entries found."
+msgstr ""
+
+msgid "Search restricted to the following organizational units:"
+msgstr ""
+
+msgid "Warning: Too many results were found, a partial list follows."
+msgstr ""
+
+msgid "You may redefine your search to get more specific results."
+msgstr ""
+
+msgid "Edit Organizational Unit Information"
+msgstr ""
+
+msgid "Search failed."
+msgstr ""
+
+msgid "No entries or multiple entries found."
+msgstr ""
+
+#, php-format
+msgid "This dn actually already exists, edit here: %s"
+msgstr ""
+
+msgid "Could not update your entry on the Directory Server."
+msgstr ""
+
+msgid "Could not insert new entry in the Directory Server."
+msgstr ""
+
+msgid "Your details have been successfully modified on the Directory Server."
+msgstr ""
+
+msgid "Return to Directory Profile Edit Page"
+msgstr ""
+
+msgid "Submit Changes"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Type of Output"
+msgstr ""
+
+msgid "One Table"
+msgstr ""
+
+msgid ""
+"Display results as one big table with one row per record found and each "
+"selected attribute as a separate column."
+msgstr ""
+
+msgid "Multiple Table"
+msgstr ""
+
+msgid ""
+"One table per record found with 2 columns for each table. One colunn "
+"contains attribute names and the 2nd column shows values for each "
+"attribute.  This format is best if you have many attributes selected or if "
+"the values for some of the attributes you have selected can be very long "
+"with no spaces."
+msgstr ""
+
+msgid "Fields to display"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Directory Preferences"
+msgstr ""
+
+msgid "Customize the output of the Directory Services page."
+msgstr ""
+
+msgid "Edit Directory Profile"
+msgstr ""
+
+msgid ""
+"Edit your personal data which other people see in the Directory Service, and "
+"set up privacy options."
+msgstr ""
+
+msgid "Directory Services"
+msgstr ""
+
+msgid "Directory preferences saved"
+msgstr ""
+
+msgid "Organizational Unit Information"
+msgstr ""
+
+msgid "In this Organizational Unit:"
+msgstr ""
+
+msgid "Browse All People"
+msgstr ""
+
+msgid "Search for People"
+msgstr ""
+
+msgid "Browse people with specific affiliation:"
+msgstr ""
+
+msgid "Edit Information about this Organizational Unit"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Back to Search Results"
+msgstr ""
+
+msgid "Personal Information"
+msgstr ""
+
+msgid "Faculty"
+msgstr ""
+
+msgid "Student"
+msgstr ""
+
+msgid "Staff"
+msgstr ""
+
+msgid "Alum"
+msgstr ""
+
+msgid "Member"
+msgstr ""
+
+msgid "Affiliate"
+msgstr ""
+
+msgid "Employee"
+msgstr ""
+
+msgid "Organization"
+msgstr ""
+
+msgid "Organizational Unit"
+msgstr ""
+
+msgid "Nickname"
+msgstr ""
+
+msgid "Principal Name"
+msgstr ""
+
+msgid "Entitlement"
+msgstr ""
+
+msgid "Home Page"
+msgstr ""
+
+msgid "Identification Policy"
+msgstr ""
+
+msgid "Legal Name"
+msgstr ""
+
+msgid "Superior Unit"
+msgstr ""
+
+msgid "White Pages"
+msgstr ""
+
+msgid "UserID"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Surname"
+msgstr ""
+
+msgid "First Name"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Organisation"
+msgstr ""
+
+msgid "Organisational Unit"
+msgstr ""
+
+msgid "Department"
+msgstr ""
+
+msgid "Email Address"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Home Phone"
+msgstr ""
+
+msgid "Mobile Phone"
+msgstr ""
+
+msgid "Fax"
+msgstr ""
+
+msgid "State"
+msgstr ""
+
+msgid "Room Number"
+msgstr ""
+
+msgid "Preferred Delivery Method"
+msgstr ""
+
+msgid "Locality (City)"
+msgstr ""
+
+msgid "Postal Address"
+msgstr ""
+
+msgid "Postal Code"
+msgstr ""
+
+msgid "Post Office Box"
+msgstr ""
+
+msgid "Physical Delivery Office Name"
+msgstr ""
+
+msgid "Home Address"
+msgstr ""
+
+msgid "Web Address"
+msgstr ""
+
+msgid "Structural Type"
+msgstr ""
+
+msgid "Knowledge Subject"
+msgstr ""
+
+msgid "Project Involved In"
+msgstr ""
+
+msgid "Attributes to remain private from the public"
+msgstr ""
+
+msgid "Attributes to remain private for University Users"
+msgstr ""
+
+msgid "Compose"
+msgstr ""
+
+msgid "Minimize / Maximize"
+msgstr ""
+
+msgid "People"
+msgstr ""
+
+msgid "Educational Units"
+msgstr ""
+
+msgid "Administration Units"
+msgstr ""
+
+msgid "Organizational Units"
+msgstr ""
+
+msgid "Contains"
+msgstr ""
+
+msgid "Is"
+msgstr ""
+
+msgid "No records found"
+msgstr ""
+
+msgid "Add Share"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Private"
+msgstr ""
+
+msgid "(All)"
+msgstr ""
+
+msgid "Browse All People in this Organizational Unit"
+msgstr ""
+
+msgid "Search for People in this Organizational Unit"
+msgstr ""
+
+msgid "Add a new Organizational Unit"
+msgstr ""
+
+msgid "Information about this Organizational Unit"
+msgstr ""
+
+msgid "Display Mode:"
+msgstr ""
+
+msgid "Operation Mode:"
+msgstr ""
+
+msgid "Simple"
+msgstr ""
+
+msgid "Advanced"
+msgstr ""

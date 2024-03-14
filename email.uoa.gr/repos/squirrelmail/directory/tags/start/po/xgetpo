@@ -1,0 +1,2 @@
+#!/bin/sh
+xgettext -L PHP --keyword=_ --no-location --default-domain=directory ../*.php ../schemas/*.php ../custom/*.php -o directory.pot

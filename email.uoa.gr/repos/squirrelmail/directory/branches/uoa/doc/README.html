@@ -1,0 +1,83 @@
+
+<h1>Directory Service Plugin for Squirrelmail</h1>
+
+<p><strong>Brent Bice</strong> (bbice at persistence .com) originally wrote the
+much famous <a
+href="http://www.squirrelmail.org/plugin_view.php?id=42">ldapquery plugin for
+Squirrelmail</a>; a plugin for searching LDAP for users.</p>
+
+<p>This is a plugin with the same functionality, highly based on Brent's code,
+with the following additional features:</p>
+
+<ul>
+
+<li>Squirrelmail 1.4.x compatibility, guidelines compatible</li>
+
+<li>Supports extra information display about an organizational unit.</li>
+
+<li>LDAP Schemas (Definitions of the various attributes) are stored in separate
+files and can be extended easily.</li>
+
+<li>Supports the eduOrg and eduPerson schemas, as defined by the Internet2
+Middleware, Architecture Committee, Directory Working Group (MACE-Dir).</li>
+ 
+<li>Organizational Units are cached in the session.</li>
+
+<li>User can place a restriction filter: the result must belong to the
+organizational unit(s) selected by the user.</li>
+
+<li> Supports a kind of interoperability with the <a
+href="http://email.uoa.gr/projects/squirrelmail/useracl.php">Shared Folders
+(useracl) plugin</a> for Squirrelmail: can display a direct link from the
+directory search results, to add a share to a particular user.</li>
+
+<li>Adds an option in config.php for the maximum number of results that the
+LDAP server will return. If there are more than the maximum results, a nice
+message is being displayed.</li>
+
+<li>Localizable. Template is at po/ldapquery.pot.</li>
+
+<li>If a localized entry exists in the LDAP and it matches the user's locale,
+for example: entry cn;lang-fr exists and user has French locale, it will use
+this entry. It first converts from LDAP's UTF8 to the charset used in
+Squirrelmail, using mb_string_convert() or recode() or iconv(), whichever is
+available.</li>
+
+<li>User can ask for many criteria to be ANDed in the search.</li>
+
+<li>Can use an administrator-supplied bind dn &amp; password.</li>
+
+<li>uses makeComposeLink() for the mailto: hyperlinks. (Requires Squirrelmail
+1.4.2)
+
+<li>Can display alternate mail addresses if they exist on user's LDAP object.
+
+<li>Looks really nice, with Squirrelmail colors and tables.
+
+</ul>
+
+
+<h2>TODO</h2>
+
+<ul>
+<li>Finalize some fixes for multiple tables as well (such as multilanguage
+support). Currently only single-table output is completed.</li> 
+ 
+</ul>
+
+
+
+<address>
+Based on the <a
+href="http://www.squirrelmail.org/plugin_view.php?id=42">ldapquery plugin by
+Brent Bice</a><br />
+
+Original Author:<br />
+Brent Bice<br />
+bbice at persistence dot com<br />
+<a target="_blank" href="http://www.persistence.com/">Persistence Software Inc.</a>
+<br />
+</address>
+
+
+

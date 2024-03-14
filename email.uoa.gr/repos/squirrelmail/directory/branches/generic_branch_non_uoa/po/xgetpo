@@ -1,0 +1,28 @@
+#!/bin/sh
+xgettext -L PHP --keyword=_ --no-location --default-domain=directory \
+	-o directory.pot \
+	../browse.php \
+	../constants.php \
+	../directory.php \
+	../display.php \
+	../frameset.php \
+	../functions.php \
+	../html.php \
+	../index.php \
+	../javascript.php \
+	../options.php \
+	../setup.php \
+	../showeduorginfo.php \
+	../schemas/eduorg.php \
+	../schemas/main.php \
+	../schemas/uoa.php \
+	../custom/*.php \
+	../standalone/*.php \
+	../vcard*.php
+
+xgettext -L PHP --keyword=_ --no-location --default-domain=directory_editprofile \
+	-o directory_editprofile.pot \
+	../editprofile.php \
+	../editprofile_functions.php \
+	../schemas/descriptions.php
+	

@@ -1,0 +1,220 @@
+LDAP Address Book Backend
+=========================
+
+SquirrelMail LDAP Personal Address Book Backend Plugin (ldap_abook_backend)
+By Daniel Marczisovszky <marczi@dev-labs.com>
+
+Based on Address book backend template by Tomas Kuliavas
+
+Copyright (c) 2005-2006 Daniel Marczisovszky <marczi@dev-labs.com>
+
+Licensed under the GNU GPL. For full terms see the file COPYING that came
+with the Squirrelmail distribution.          
+
+Requires at least SquirrelMail 1.4.5
+
+
+1. Description
+===============
+
+LDAP abook backend is a generic solution to store SquirrelMail Personal Address
+Book entries in an LDAP directory. It can use any LDAP class, SquirrelMail
+attributes can be freely mapped to LDAP attributes.
+Address Book entries can be stored directly under the user's object, or a
+dedicated container object can be used. The plugin is capable of creating this
+container object automatically when it is required.
+
+There is little utility (convert_abook.php) that may help to convert your
+file based address books to LDIF format.
+
+
+2. Configuration
+================
+
+To set up ldap_abook_backend, you should edit config.php. A sample
+configuration can be found in config_sample.php. Copy or rename this
+file to config.php before using this plugin!
+
+The following parameters can be set:
+
+Parameter name                  Meaning
+
+$ldapAbookDebug                 Enable/disable debug log. The log file should
+                                be specified in ldap_common plugin.
+
+
+$ldapAbookReplaceFileAbook	If set to true, then the built-in file-based
+				Address Book will disabled and the this plugin
+				will be default personal address book.
+				If set to false, plugin will be an additional
+				address book, but you will still have the file-
+				based, which will be the default one.
+
+$ldapAbookHost                  LDAP server's host
+                                Example: localhost
+
+$ldapAbookOptions               Array of LDAP settings applied just after
+                                LDAP connect has finished successfully.
+                                See ldap_set_option for details in PHP doc.
+                                Note that constants should be specified as
+                                strings.
+                                Example:
+                                array("LDAP_OPT_PROTOCOL_VERSION" => 3);                          
+
+$ldapAbookUseTls		Enable START_TLS. Requires protocol V3.
+
+$ldapAbookUseSelfAuth		Bind as a manager account, or bind as the found
+				mail account's DN and current user's password.
+
+				If set to true, then the plugin will search the
+				user's DN using the $ldapPrefUserFilter. After
+				that it binds to the LDAP server with this DN
+				and the password used for login into
+				SquirrelMail.
+
+				If set to false, then the plugin will bind as
+				$ldapPrefUser (see below) with password as
+				$ldapPrefPassword. In this case this user
+				should have enough privileges to modify the
+				virtual mail account objects.
+
+$ldapAbookBindDn                DN of the manager account if
+				$ldapPrefUseSelfAuth is true.
+				Example: cn=squirrel,dc=dev-labs,dc=com
+
+$ldapAbookBindPassword          Password for the user above.
+                                Example: secret
+
+$ldapAbookBase                  Base DN for searching mail accounts
+                                Example: ou=virtMail, dc=dev-labs, dc=com
+
+$ldapAbookFilter                Filter used to search the mail account under
+				$ldapPrefBase
+                                The %username will be replaced by the username
+                                given at login time.
+                                Example: (mail=%username)
+
+$ldapAbookObjectClass 		Values of the objectClass attribute for creating
+				new entries. Values should be specfied in an
+				array.
+				Example: array("top", "inetOrgPerson");
+
+SquirrelMail uses five attributes for every address book entry:
+nickname (which should be unique), firstname, lastname, email and
+label (description). With the plugin you may assign any LDAP attribute to
+these attributes.
+
+$ldapAbookAttrXXX		Name of the attribute. XXX can be:
+				Nickname, Firstname, Lastname, Email and Label.
+				Example: cn
+
+In LDAP there may attributes which are required, while at the same time they
+may be empty in SquirreMail. An example is the "sn" attribute in LDAP which
+is required in inetOrgPerson, but can be empty in SquirrelMail. To avoid LDAP
+errors, the plugin can check every attribute, one-by-one, if their value is
+empty or not on a modify or add operation. These checks can be enabled/disabled
+for every attribute.
+
+$ldapAbookRequiredXXX		Value not empty check is enabled/disabled for
+				the attribute. XXX can be: Nickname, Firstname,
+				Lastname, Email and Label.
+				Example: true
+
+$ldapAbookValidateEmail		Enable checking email address if contains
+				characters ASCII value > 127.
+				Example: true
+
+When entries are listed on the Address Book page, the name column shows a
+generated value rather than a stored value. This name column is the
+concatenation of the firstname and lastname attribute. However, in countries
+like Hungary, China, Japan and Vietnam the family name comes first, followed
+by the given name. This plugin generates the full name attribute by using a
+template rather than a hard-code way.
+
+$ldapAbookFullnameTemplate	Full name template
+				Example: %firstname %lastname
+
+It may be required to separate address book entries under a dedicated object, 
+not directly under the user's object. This may be useful if not only address
+entries are stored under the user's object and different security settings
+should be used for address entries than for other objects. The given value is
+prepended to user's DN when performing Address Book operations. Example: if
+user's DN is cn=Daniel Marczisovszky, ou=VirtualMail, dc=dev-labs, dc=com
+and $ldapAbookContainerDnAttr is ou=addresses then base DN for Address Book
+operations will be:
+ou=addresses, cn=Daniel Marczisovszky, ou=VirtualMail, dc=dev-labs, dc=com
+If this object does not exist when user adds a new entry, the plugin will
+automatically create this container object.
+
+$ldapAbookContainerDnAttr	If not empty, then the given value will be
+				prepended to the DN of the user's object for 
+				every operation.
+				Example: ou=addresses
+
+
+$ldapAbookContainerObjectClass	The plugin can automatically create the
+				dedicated container object when it is
+				necessary. To do this, the objectClass of
+				this container should be specified.
+				Example: array("top", "organizationalUnit");
+
+
+3. Security and Schema
+======================
+
+Depending on configuration and your needs, different scenarios are available
+to access the LDAP server. However, it very important to set up proper ACLs to
+avoid unauthorized access. ACL examples can be found in the SECURITY file.
+Address book entries are added under user account's object.
+
+Available scenarios are results of combination of the following parameters:
+
+I. Which user has access to address book entries:
+
+   - Dedicated user: a dedicated user should be added to the LDAP tree and
+     this user should have access to personal address books. This is not the
+     recommended approach, but maybe useful for testing. 
+     Use $ldapAbookBindDn and $ldapAbookBindPassword and set $ldapAbookUseSelfAuth
+     to false.
+   - The user has appropriate rights to modify his/her object. The plugin will
+     search the user's DN and use that DN to bind to LDAP. Use $ldapAbookBase and
+     $ldapAbookFilter for this query and set $ldapAbookUseSelfAuth to true. It is
+     bit tricky to set up ACLs, but this is the only way to provide that only the
+     user can access his/her personal address book.
+
+II. Where the entries are stored:
+
+   - Entries are stored directly under the user account's object. This may be
+     useful when only address book entries are stored. Set
+     $ldapAbookContainerDnAttr and $ldapAbookContainerObjectClass to empty.
+   - A separate object is used under the user account's object. Entries will be
+     stored under this object. This is useful if not only address book objects
+     are stored under the user account's object, and the address book entries
+     should be completely separated. Set $ldapAbookContainerDnAttr to that
+     relative DN which is prepended to user's DN (example: ou=addresses).
+     $$ldapAbookContainerObjectClass is an array which stores the objectClass
+     of this object.
+
+4. Character encoding
+=====================
+
+It is higly recommended to use LDAPv3 protocol if users use languages other
+than English. The only proper way to store international characters in LDAP is
+to use UTF-8. The plugin will convert to UTF-8 when writing to LDAP server and
+will convert back to that character set which corresponds to the current
+user's language setting. However, UTF-8 works only when LDAP protocol V3 is
+used, so the default config.php has LDAPv3 enabled.
+
+
+
+5. Logging
+==========
+
+When the plugin is first used, it may be very useful to see what happens in the
+background. It helps to find out misspells in config.php or insufficient ACLs.
+Set $ldapAbookDebug to true to enable debug log. However, the log file should
+be specified in ldap_common plugin's config.php. It is recommended to enable
+debug log for LDAP Common plugin as well, since that will log low-level LDAP
+operations.
+IMPORTANT NOTE: log file will contain unencrypted passwords as well, so don't
+use it in a production environment.

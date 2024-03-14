@@ -1,9 +1,0 @@
-#!/bin/sh
-for dir in `ls -1 ../locale/`
-do
-	mv ../locale/$dir/LC_MESSAGES/ldapfolderinfo.po ../locale/$dir/LC_MESSAGES/ldapfolderinfo.po.bak
-	echo "Executing: msgmerge ../locale/$dir/LC_MESSAGES/ldapfolderinfo.po.bak ldapfolderinfo.pot > ../locale/$dir/LC_MESSAGES/ldapfolderinfo.po";
-	msgmerge ../locale/$dir/LC_MESSAGES/ldapfolderinfo.po.bak ldapfolderinfo.pot > ../locale/$dir/LC_MESSAGES/ldapfolderinfo.po
-done
-
-     

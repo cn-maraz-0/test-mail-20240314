@@ -1,0 +1,8 @@
+#!/bin/sh
+for dir in `ls -1d ../locale/??_??`
+do
+echo "Executing msgfmt -o $dir/LC_MESSAGES/directory.mo $dir/LC_MESSAGES/directory.po"
+msgfmt -c -v -o $dir/LC_MESSAGES/directory.mo $dir/LC_MESSAGES/directory.po
+echo "Executing msgfmt -o $dir/LC_MESSAGES/directory_editprofile.mo $dir/LC_MESSAGES/directory_editprofile.po"
+msgfmt -c -v -o $dir/LC_MESSAGES/directory_editprofile.mo $dir/LC_MESSAGES/directory_editprofile.po
+done

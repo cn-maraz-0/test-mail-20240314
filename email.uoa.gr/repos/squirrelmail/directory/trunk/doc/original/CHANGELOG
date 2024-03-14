@@ -1,0 +1,94 @@
+Changes from 1.4 to 1.5
+--------------------------
+Fixed options page (SM 1.2.5 changed the way preferences were handled slightly)
+Also added in a patch supplied by Jason Munro so LDAPquery works with the
+new "compose in new window" feature.
+Changed the "Search LDAP" link to be simply "Directory" -- I'm told this is
+less "threatening" to the users. (grin)
+
+Changes from 1.3 to 1.4
+--------------------------
+Fixed a bug that occurred if you had more than one LDAP server and user
+performed a search that yielded an error on one of the LDAP servers.
+Now the search will properly continue on the rest of the servers instead
+of stopping after the first failure from one of the LDAP servers.
+
+Changes from 1.2 to 1.3
+--------------------------
+Just changed include(...) with require_once(...)
+
+Changes from 1.1 to 1.2
+--------------------------
+Added an optional "UserDN" and "Password" field of input. Some LDAP servers
+are configured to not allow anonymous queries.
+Fixed bug where a PHP error was displayed if the user's search found no records.
+Fixed "empty cell" bug - cosmetic fix to make the tables prettier.
+
+Changes from 1.0 to 1.1
+--------------------------
+Added a "Sort By" pull-down selection.  It lists all the attributes in
+$ldapquery_attributes -- the full list fetched from the LDAP server so the
+user can sort the output by any attribute they want (even attributes they
+don't want actually printed in the output).
+
+Also updated the results page some. The column headers in single-table
+output and the row headers in multi-table output are now nice text 
+descriptions instead of just attribute names.  They're configurable
+too because the $ldapquery_attributes array uses the long name as an array
+index just like $ldapquery_searchobjs (see config.php for an example).
+
+
+Changes from 0.2 to 1.0
+--------------------------
+TONS!
+
+I updated the output so that email addresses are formed as links to a
+compose window to that email address. 
+
+I also updated the plugin to work with the newer versions of SM (1.1.1 or
+later should be ok). In fact, it REQUIRES 1.1.1 or later.
+
+Renamed the function calls in setup.php to conform to accepted standards
+and also rewrote ldapquery.php so it shouldn't have any variable name
+conflicts with other code.  All my global variables are prefixed with
+ldapquery_ or ldq_.
+
+Added an options page so the user can select to see one of two forms of output:
+   1. Single Table - A single table of records, one record per row, each
+      column being a separate attribute in the record.
+   2. Multiple Tables - One table per record, each table being two columns
+      with one column for "attribute" and one column for "value".  This format
+      is more useful if you have a LOT of attributes selected for display.
+
+Added a "Search For" field so the user can select what object classes they
+want to limit their searches to.  For instance, they could select "Person"
+and the plugin will only show records of type objectclass=person. The
+objectclasses that are displayed for the user to choose from are configureable
+by editing config.php
+
+I also added a checkbox item for EVERY attribute you define in ldq_attributes
+in config.php.  That way the sysadmin can configure the plugin for whatever
+he/she wants to let the users see (schema-dependent, which is why
+ldq_attributes is in config.php), and the user can select from this list of
+attributes what attributes THEY want to see in their search results window.
+
+Added a menuline to the top of the search/results pages.
+
+
+Changes from 0.1 to 0.2
+--------------------------
+Not too many. I modified the form so there's a pull-down to set what 
+attribute you want to search by.  The content of this pulldown and the
+resulting attributes are stored in an array assigned in config.php.  The
+index of the array is the string the user sees in the pulldown menu, and the
+value is the attribute that will be added to the search filter.
+
+I also put in a pulldown menu to select whether the search is one where
+the selected attribute "contains" or "is" some text searchspec.  So now,
+if the user wants to search for eMail addresses that contain
+"squirrelmail.org" in them, he can select eMail for the attribute, select
+"Is" for the search type, and enter "*squirrelmail.org" in the text field
+to yield an LDAP query of "mail=*squirrelmail.org".  
+
+Lastly, I updated the output slightly, so the entries with labeledurl
+attributes are displayed as a really-o-truly-o hotlink.  

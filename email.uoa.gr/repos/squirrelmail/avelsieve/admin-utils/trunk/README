@@ -1,0 +1,69 @@
+Avelsieve Script Management: Package "admin-utils".
+===================================================
+
+The 'utils' scripts are PHP-CLI scripts intended to be used
+by administrators or power users, and are used for migration of
+users' rules, statistics extraction and other batch jobs.
+
+THESE SCRIPTS ARE PROVIDED WITH NO SUPPORT.
+
+You might need to edit many of these scripts to make them
+useful to you. They are only provided here only for guidance
+and in case they might be useful to someone.
+
+Quick run-down on how to use a script:
+
+1) Read the script code.
+
+2) Adjust accordingly.
+
+3) Put a list of usernames in usernames/<filename>.
+
+4) Copy utils_global_config_sample.php to utils_global_config.php and edit
+accordingly.
+
+5) Edit avelsieve file:
+  ../include/support.inc.php
+ and comment out the line:
+ //include_once(SM_PATH . 'functions/identity.php');
+ 
+[When you are done, and if this is the local installation of Squirrelmail in
+your administration machine, put it back for normal avelsieve operation :-p]
+
+
+6) Do a test run. e.g.
+
+ $ php5 ./migrate_11_11newtests.php
+
+ or 
+
+ $ php5 ./migrate_11_11newtests.php > logs/testrun.txt
+
+ and study the results to see if they are OK.
+
+7) Back up your users' Sieve scripts.
+
+8) Uncomment the "Production run" snippet in migrate_*.php script and do a
+production run.
+
+
+========================================================
+
+
+Licensing Blurb:
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+THIS PROGRAM IS DISTRIBUTED IN THE HOPE THAT IT WILL BE USEFUL,
+BUT WITHOUT ANY WARRANTY; WITHOUT EVEN THE IMPLIED WARRANTY OF
+MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  SEE THE
+GNU GENERAL pUBLIC lICENSE FOR MORE DETAILS.
+
+You should have received a copy of the GNU General Public License
+along with this program (in the file COPYING); if not, write to the
+Free Software Foundation, Inc.,
+51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
+

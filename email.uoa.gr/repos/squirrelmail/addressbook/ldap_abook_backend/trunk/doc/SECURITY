@@ -1,0 +1,123 @@
+Interesting documents that may help:
+http://sapiens.wustl.edu/~sysmain/info/openldap/openldap_configure_acl.html
+man slapd.access
+
+In all ACL examples the following are assumed:
+
+- Examples are for OpenLDAP 2.2.X
+- There is a user, called "cn=admin, dc=dev-labs, dc=com" which has
+  access to everthing.
+- When dedicated user is used, it is called "cn=squirrel, dc=dev-labs, dc=com"
+- Mail domains are stored under ou=virtualMail, dc=dev-labs, dc=com.
+- Users are grouped in separate domain objects (one object per virtual host).
+- User accounts are stored under these mail domain objects.
+- User account key attribute is mail.
+- Entries are inetOrgPerson objects, their key attribute is cn.
+- ACLs are added after the following lines:
+
+# This is required for performing authentication
+access to attrs=userPassword
+        by dn="cn=admin,dc=dev-labs,dc=com" write
+        by anonymous auth
+        by self write
+        by * none
+
+- Your ACLS are added before these lines.
+
+# You may change these according to your needs: for example
+# anonymous read and search can be disabled, etc...
+access to *
+        by dn="cn=admin,dc=dev-labs,dc=com" write
+	by * read
+
+
+Examples:
+
+1. Only the user has access to his/her address book entries, even admin can't
+   see those objects. Entries are stored under a dedicated address book object.
+   (This is recommended setup.)
+   
+# Ensure user can add objects under his/her object (attrs=children)
+access to dn.regex="^(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=children
+    by dn.exact,expand="$1" write
+# Ensure user can create an address book object (attrs=entry)
+access to dn.regex="^ou=addresses,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=entry
+    by dn.exact,expand="$1" write
+
+# Ensure user can add entries under his/her addressbook (attrs=children)
+access to dn.regex="^ou=addresses,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=children
+    by dn.exact,expand="$1" write
+# Ensure user can create entries (attrs=entry)
+access to dn.regex="^cn=[^,]+,ou=addresses,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=entry
+    by dn.exact,expand="$1" write
+# Ensure user can edit attributes that inetOrgPerson objects have (attrs=@inetOrgPerson)
+access to dn.regex="^cn=[^,]+,ou=addresses,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=@inetOrgPerson
+    by dn.exact,expand="$1" write
+
+
+
+2. Only the user has access to his/her address book entries, even admin can't
+   see those objects. Entries are stored directly under the user account's
+   object.
+   
+# Ensure user can add entries under his/her addressbook (attrs=children)
+access to dn.regex="^(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=children
+    by dn.exact,expand="$1" write
+# Ensure user can create entries (attrs=entry)
+access to dn.regex="^cn=[^,]+,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=entry
+    by dn.exact,expand="$1" write
+# Ensure user can edit attributes that inetOrgPerson objects have (attrs=@inetOrgPerson)
+access to dn.regex="^cn=[^,]+,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=@inetOrgPerson
+    by dn.exact,expand="$1" write
+
+
+
+3. Both admin and the user has access to his/her address book entries.
+   Entries are stored under a dedicated address book object (ou=addresses).
+   (This may be also recommended, if admin has to modify address books.)
+
+# Ensure user and admin can add objects under his/her object (attrs=children)
+access to dn.regex="^(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=children
+    by dn="cn=admin, dc=dev-labs, dc=com" write
+    by dn.exact,expand="$1" write
+# Ensure user and admin can create an address book object (attrs=entry)
+access to dn.regex="^ou=addresses,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=entry
+    by dn="cn=admin, dc=dev-labs, dc=com" write
+    by dn.exact,expand="$1" write
+
+# Ensure user and admin can add entries under his/her addressbook (attrs=children)
+access to dn.regex="^ou=addresses,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=children
+    by dn="cn=admin, dc=dev-labs, dc=com" write
+    by dn.exact,expand="$1" write
+# Ensure user and admin can create entries (attrs=entry)
+access to dn.regex="^cn=[^,]+,ou=addresses,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=entry
+    by dn="cn=admin, dc=dev-labs, dc=com" write
+    by dn.exact,expand="$1" write
+# Ensure user and admin can edit attributes that inetOrgPerson objects have (attrs=@inetOrgPerson)
+access to dn.regex="^cn=[^,]+,ou=addresses,(mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com)$" attrs=@inetOrgPerson
+    by dn="cn=admin, dc=dev-labs, dc=com" write
+    by dn.exact,expand="$1" write
+
+
+
+4. Dedicated user has access to every personal address book entry.
+   Entries are stored under a dedicated address book object.
+   (This is not recommended, since password should be stored in the 
+   config file, but it may be useful for testing.)
+   
+# Ensure dedicated user and admin can add objects under his/her object (attrs=children)
+access to dn.regex="^mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com$" attrs=children
+    by dn="cn=squirrel, dc=dev-labs, dc=com" write
+# Ensure user and admin can create an address book object (attrs=entry)
+access to dn.regex="^ou=addresses,mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com$" attrs=entry
+    by dn="cn=squirrel, dc=dev-labs, dc=com" write
+
+# Ensure dedicated user and admin can add entries under his/her addressbook (attrs=children)
+access to dn.regex="^ou=addresses,mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com$" attrs=children
+    by dn="cn=squirrel, dc=dev-labs, dc=com" write
+# Ensure dedicated user and admin can create entries (attrs=entry)
+access to dn.regex="^cn=[^,]+,ou=addresses,mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com$" attrs=entry
+    by dn="cn=squirrel, dc=dev-labs, dc=com" write
+# Ensure dedicated user and admin can edit attributes that inetOrgPerson objects have (attrs=@inetOrgPerson)
+access to dn.regex="^cn=[^,]+,ou=addresses,mail=[^,]+,domain=[^,]+,ou=virtualMail,dc=dev-labs,dc=com$" attrs=@inetOrgPerson
+    by dn="cn=squirrel, dc=dev-labs, dc=com" write

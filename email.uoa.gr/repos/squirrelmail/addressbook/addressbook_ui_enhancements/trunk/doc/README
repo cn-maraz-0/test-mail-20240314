@@ -1,0 +1,21 @@
+This is a plugin that enhances the addressbook page of Squirrelmail with
+various dynamic, Javascript / DHTML / AJAX features.
+
+For more information, please visit:
+
+http://email.uoa.gr/projects/squirrelmail/addressbook.php
+
+Dependencies:
+
+* Squirrelmail Stable (1.4.10+)
+* Plugin 'famfamfam' for the icons
+* Plugin 'javascript_libs' for the javascript prototype and scriptaculous libraries
+* Plugin 'directory' for the LDAP schemata and their descriptions / translations
+* Plugins 'ldap_common' and 'ldap_abook_backend' for the LDAP backend of the
+    Squirrelmail addressbook 
+
+Author:
+(c) Copyright 2007 Alexandros Vellis
+National and Kapodistrian University of Athens
+Network Operations Centre
+

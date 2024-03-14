@@ -1,0 +1,71 @@
+
+                   Directory Service Plugin for Squirrelmail
+
+   Brent Bice (bbice at persistence .com) originally wrote the much
+   famous [1]ldapquery plugin for Squirrelmail; a plugin for searching
+   LDAP for users.
+
+   This is a plugin with the same functionality, highly based on Brent's
+   code, with the following additional features:
+     * Squirrelmail 1.4.x compatibility, guidelines compatible
+     * Supports extra information display about an organizational unit.
+     * LDAP Schemas (Definitions of the various attributes) are stored in
+       separate files and can be extended easily.
+     * Supports the eduOrg and eduPerson schemas, as defined by the
+       Internet2 Middleware, Architecture Committee, Directory Working
+       Group (MACE-Dir).
+     * Organizational Units are cached in the session.
+     * User can place a restriction filter: the result must belong to the
+       organizational unit(s) selected by the user.
+     * Supports a kind of interoperability with the [2]Shared Folders
+       (useracl) plugin for Squirrelmail: can display a direct link from
+       the directory search results, to add a share to a particular user.
+     * Adds an option in config.php for the maximum number of results
+       that the LDAP server will return. If there are more than the
+       maximum results, a nice message is being displayed.
+     * Localizable. Template is at po/ldapquery.pot.
+     * If a localized entry exists in the LDAP and it matches the user's
+       locale, for example: entry cn;lang-fr exists and user has French
+       locale, it will use this entry. It first converts from LDAP's UTF8
+       to the charset used in Squirrelmail, using mb_string_convert() or
+       recode() or iconv(), whichever is available.
+     * User can ask for many criteria to be ANDed in the search.
+     * Can use an administrator-supplied bind dn & password.
+     * uses makeComposeLink() for the mailto: hyperlinks. (Requires
+       Squirrelmail 1.4.2)
+     * Can display alternate mail addresses if they exist on user's LDAP
+       object.
+     * Looks really nice, with Squirrelmail colors and tables.
+
+Download
+
+   You can grab the latest sources via anonymous CVS, using this command
+   sequence: (Press enter when asked for a password)
+   cvs -d:pserver:anoncvs@email.uoa.gr:/squirrelmail login
+   cvs -z3 -d:pserver:anoncvs@email.uoa.gr:/squirrelmail co directory
+
+   There is also a [3]ViewCVS Web Interface to the repository.
+
+TODO
+
+     * Finalize some fixes for multiple tables as well (such as
+       multilanguage support). Currently only single-table output is
+       completed.
+     * Clean up and support all the different configurations.
+     * Stabilize API for other Squirrelmail applications to pass
+       javascript code.
+
+
+    Based on the [4]ldapquery plugin by Brent Bice
+    Original Author:
+    Brent Bice
+    bbice at persistence dot com
+    [5]Persistence Software Inc.
+
+References
+
+   1. http://www.squirrelmail.org/plugin_view.php?id=42
+   2. http://email.uoa.gr/projects/squirrelmail/useracl.php
+   3. http://email.uoa.gr/cgi-bin/viewcvs.cgi/directory/
+   4. http://www.squirrelmail.org/plugin_view.php?id=42
+   5. http://www.persistence.com/
